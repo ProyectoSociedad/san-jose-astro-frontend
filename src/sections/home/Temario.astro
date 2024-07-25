@@ -1,0 +1,134 @@
+---
+import { ChevronDownIcon } from '@/components/icons/ChevronDownIcon'
+import { OptimizeImage } from '@/components/shared/OptimizeImage'
+const accordionData = [
+	{
+		title: 'Módulo estudios generales',
+		subSections: [
+			'Liderazgo y desarrollo organizacional',
+			'Ética en las actividades inmobiliarias',
+			'Lenguaje y redacción',
+			'Matemática Básica',
+			'Herramientas informáticas para el desarrollo de operaciones inmobiliarias de intermediación / Taller de marketing digital'
+		]
+	},
+	{
+		title: 'Modulo aspectos legales aplicables a la gestión inmobiliaria',
+		subSections: [
+			'Derecho Inmobiliario',
+			'Derecho Civil Patrimonial',
+			'Derecho Penal',
+			'Licenciamiento Urbano',
+			'Análisis de la Ley 29080, Ley de creación del Registro del Agente Inmobiliario',
+			'Contratos inmobiliarios'
+		]
+	},
+	{
+		title: 'Modulo aspectos financieros, contables, tributarios, estadísticos y de avaluó',
+		subSections: [
+			'Aspectos Tributarios',
+			'Técnicas de tasación de inmuebles',
+			'Financiamiento inmobiliario',
+			'Estadística inmobiliaria',
+			'Técnicas de evaluación crediticia'
+		]
+	},
+	{
+		title: 'Modulo administración y marketing, comercialización, negociación y gestión comercial',
+		subSections: [
+			'Marketing inmobiliario',
+			'Administración inmobiliaria',
+			'El mercado inmobiliario actual',
+			'Técnicas de investigación de mercado',
+			'Gestión Comercial',
+			'Gestión del Agente Inmobiliario'
+		]
+	},
+	{
+		title: 'Modulo urbanismo y arquitectura',
+		subSections: [
+			'Planificación y Desarrollo Urbano',
+			'Catastro urbano',
+			'Lectura, expresión gráfica e interpretación de planos',
+			'Arquitectura de interiores'
+		]
+	}
+]
+---
+
+<style>
+	details > summary {
+		position: relative;
+		list-style: none; /* Elimina la flecha por defecto */
+		cursor: pointer; /* Hace que el cursor sea una mano al pasar sobre el summary */
+		padding-right: 20px; /* Asegura espacio para el icono */
+	}
+
+	details > summary .icono-summary {
+		position: absolute;
+		right: 0; /* Alinea el icono a la derecha */
+		transition: transform 0.2s; /* Animación para rotar el icono */
+	}
+
+	details[open] > summary .icono-summary {
+		transform: rotate(-180deg); /* Rota el icono cuando el details está abierto */
+	}
+
+	details > summary::-webkit-details-marker {
+		display: none; /* Específico para WebKit: oculta la flecha por defecto */
+	}
+</style>
+<section class="container relative py-[33px] lg:py-[66px]">
+	<h2 class="text-center text-[18px] font-semibold text-semi-dark-blue sm:text-[25px]">TEMARIO</h2>
+	<div class="mx-auto mt-8 grid max-w-[450px] gap-[20px] lg:hidden">
+		{
+			accordionData.map((info, i) => {
+				return (
+					<div class="rounded-xl border-2 border-light-mustard px-8 py-4">
+						<details open={i === 0}>
+							<summary class="font-semibold text-semi-dark-blue">
+								{info.title}
+								<i class="icono-summary">
+									<ChevronDownIcon />
+								</i>
+							</summary>
+							<ul class="mt-4 flex list-disc flex-col gap-2 pl-4 font-semibold text-semi-dark-blue">
+								{info.subSections.map((sub) => (
+									<li>{sub}</li>
+								))}
+							</ul>
+						</details>
+					</div>
+				)
+			})
+		}
+	</div>
+	<div class="mx-auto mt-[65px] hidden max-w-[900px] grid-cols-2 gap-x-[90px] gap-y-[35px] lg:grid">
+		{
+			accordionData.map((info) => {
+				return (
+					<div class="rounded-xl border-2 border-light-mustard px-8 py-4 text-semi-dark-blue">
+						<strong>{info.title}</strong>
+						<ul class="mt-4 flex list-disc flex-col gap-2 pl-4 font-semibold text-semi-dark-blue">
+							{info.subSections.map((sub) => (
+								<li>{sub}</li>
+							))}
+						</ul>
+					</div>
+				)
+			})
+		}
+	</div>
+	<OptimizeImage
+		stylesPicture="ml-[-1rem] hidden top-[6%] opacity-[0.3] z-[-1] w-[60%] max-w-[760px] md:ml-[-2rem] lg:ml-[-3rem] xl:ml-[-4rem] absolute lg:block"
+		srcMobile="/home/mobile/circulo-mobile.webp"
+		srcTablet="/home/tablet/circulo-tablet.webp"
+		srcDesktop="/home/desktop/circulo-desktop.webp"
+		alt="Temario"
+	/>
+	<div
+		class="absolute left-0 top-[4%] hidden h-[150px] w-[150px] translate-x-[-50%] rounded-full border-[2px] border-light-mustard lg:block"
+	>
+	</div>
+</section>
+<!-- top-[40%] translate-y-[-50%] -->
