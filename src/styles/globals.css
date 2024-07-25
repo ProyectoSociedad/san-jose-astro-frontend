@@ -11,6 +11,11 @@
 }
 
 @layer base {
+	html {
+		scroll-behavior: smooth;
+		scroll-padding-top: 69px;
+		@apply sm:[scroll-padding-top:85.36px] lg:[scroll-padding-top:110px];
+	}
 	body {
 		@apply font-work-sans text-[14px] md:text-[16px];
 	}

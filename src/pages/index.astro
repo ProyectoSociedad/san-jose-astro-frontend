@@ -1,185 +1,68 @@
 ---
-import { AulaVirttualIcon } from '@/components/icons/AulaVirttualIcon'
-import { ClasesGrabadasIcon } from '@/components/icons/ClasesGrabadasIcon'
-import { HorarioIcon } from '@/components/icons/HorarioIcon'
-import { MaterialesDictadosIcon } from '@/components/icons/MaterialesDictadosIcon'
-import { UbicacionIcon } from '@/components/icons/UbicacionIcon'
-import { Header } from '@/components/shared/Header'
-import { OptimizeImage } from '@/components/shared/OptimizeImage'
-import Hero from '@/sections/home/Hero.astro'
-import Temario from '@/sections/home/Temario.astro'
 import '@/styles/globals.css'
+import { FacebookIcon } from '@/components/icons/FacebookIcon'
+import { TikTokIcon } from '@/components/icons/TikTokIcon'
+import { InstagramIcon } from '@/components/icons/InstagramIcon'
+import { WhatsappIcon } from '@/components/icons/WhatsappIcon'
+import Footer from '@/components/shared/Footer.astro'
+import { Header } from '@/components/shared/Header'
+
+/* ===  Secciones === */
+import Certificate from '@/sections/home/Certificate.astro'
+import Hero from '@/sections/home/Hero.astro'
+import Presentacion from '@/sections/home/Presentacion.astro'
+import Contacto from '@/sections/home/Contacto.astro'
+import Temario from '@/sections/home/Temario.astro'
+import TendrasAcceso from '@/sections/home/TendrasAcceso.astro'
+import Turno from '@/sections/home/Turno.astro'
 ---
 
 <html lang="es">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>San José del Sur - Curso de Especialización de Agente Inmobiliario</title>
+		<meta
+			name="description"
+			content="San José del Sur ofrece un Curso de Especialización de Agente Inmobiliario en colaboración con el Ministerio de Vivienda. Prepárate para sobresalir en el sector inmobiliario y construcción con nuestra formación especializada."
+		/>
+		<script
+			src="https://www.google.com/recaptcha/api.js?render=6LchufsnAAAAAKgEzDQWSH1nLyG_1ttI-7tDNvl8"
+		></script>
 	</head>
 	<body>
+		<div
+			class="fixed right-0 top-[18rem] z-30 rounded-[18px_0_0_18px] bg-light-mustard px-[15px] py-[20px] text-[25px] text-white"
+		>
+			<ul class="flex flex-col gap-[18px]">
+				<li>
+					<a href="https://www.facebook.com/CursoAgenteInmobiliarioPeru" target="_blank"
+						><FacebookIcon /></a
+					>
+				</li>
+				<li>
+					<a href="https://www.instagram.com/cursoagenteinmobiliarioperu/" target="_blank"
+						><InstagramIcon /></a
+					>
+				</li>
+				<li><a href="https://wa.link/44lnxe" target="_blank"><WhatsappIcon /></a></li>
+				<li>
+					<a href="https://www.tiktok.com/@agente.inmobiliario24" target="_blank"><TikTokIcon /></a>
+				</li>
+			</ul>
+		</div>
 		<Header client:load />
 		<main>
 			<Hero />
-			<section class="relative pt-[40px] lg:py-[80px]">
-				<div
-					class="absolute inset-0 bg-[url(./img/home/mobile/fondo-edificios-mobile.webp)] bg-cover bg-center md:bg-[url(./img/home/tablet/fondo-edificios-tablet.webp)] xl:bg-[url(./img/home/desktop/fondo-edificios-desktop.webp)]"
-				>
-					<div class="absolute inset-0 bg-light-blue bg-opacity-80"></div>
-				</div>
-				<div
-					class="container relative z-10 grid items-center gap-12 text-white lg:grid-cols-[450px_1fr] lg:gap-0 xl:grid-cols-[650px_1fr]"
-				>
-					<div class="relative p-[15px] lg:order-2 lg:p-[30px]">
-						<svg
-							class="absolute left-0 top-0"
-							xmlns="http://www.w3.org/2000/svg"
-							width="26"
-							height="26"
-							viewBox="0 0 26 26"
-							fill="none"
-						>
-							<path
-								fill-rule="evenodd"
-								clip-rule="evenodd"
-								d="M26 5V0H5H0V5V26H5V5H26Z"
-								fill="#C4C400"></path>
-						</svg>
-						<div class="space-y-4 text-justify lg:space-y-8 lg:text-xl">
-							<p>
-								Actualmente, el sector de Inmobiliaria y Construcción se destaca como uno de los
-								mayores generadores de empleo, impulsando significativamente la economía nacional.
-								La demanda de profesionales especializados en este ámbito se extiende a lo largo de
-								todo el Perú.
-							</p>
-							<p>
-								En colaboración con el Ministerio de Vivienda, Construcción y Saneamiento, hemos
-								desarrollado el <span class="text-light-mustard"
-									>Curso de Especialización de Agente Inmobiliario</span
-								>, diseñado específicamente para capacitarte y formarte como un experto en la
-								intermediación y asesoría inmobiliaria, preparándote para sobresalir en este
-								dinámico sector.
-							</p>
-						</div>
-						<svg
-							class="absolute bottom-0 right-0"
-							xmlns="http://www.w3.org/2000/svg"
-							width="26"
-							height="26"
-							viewBox="0 0 26 26"
-							fill="none"
-						>
-							<path
-								fill-rule="evenodd"
-								clip-rule="evenodd"
-								d="M-4.37114e-07 21L0 26L21 26L26 26L26 21L26 0L21 4.37114e-07L21 21L-4.37114e-07 21Z"
-								fill="#C4C400"></path>
-						</svg>
-					</div>
-					<OptimizeImage
-						stylesPicture="ml-[-1rem] md:ml-[-2rem] max-w-[350px] lg:ml-[-3rem] xl:max-w-[550px] xl:ml-[-4rem] lg:relative lg:top-[80px]"
-						srcMobile="/home/mobile/personas-mobile.webp"
-						srcTablet="/home/tablet/personas-tablet.webp"
-						srcDesktop="/home/desktop/personas-desktop.webp"
-						alt="Personas"
-					/>
-				</div>
-			</section>
-			<section class="container py-[33px] lg:py-[66px]">
-				<h2 class="text-center text-[18px] font-semibold text-semi-dark-blue sm:text-[25px]">
-					TENDRAS ACCESO A:
-				</h2>
-				<div
-					class="mx-auto my-[43px] grid max-w-[880px] gap-[25px] sm:grid-cols-2 sm:gap-y-[50px] lg:grid-cols-3 lg:gap-[77px]"
-				>
-					<div class="flex flex-col items-center gap-[20px]">
-						<AulaVirttualIcon className="text-[100px] text-light-blue" />
-						<strong
-							class="rounded-lg border-2 border-light-mustard px-[20px] py-[14px] text-semi-dark-blue"
-						>
-							Aula virtual
-						</strong>
-					</div>
-					<div class="flex flex-col items-center gap-[20px]">
-						<MaterialesDictadosIcon className="text-[100px] text-light-blue" />
-						<strong
-							class="rounded-lg border-2 border-light-mustard px-[20px] py-[14px] text-semi-dark-blue"
-						>
-							Materiales didácticos
-						</strong>
-					</div>
-					<div class="col-span-full flex flex-col items-center gap-[20px] lg:col-span-1">
-						<ClasesGrabadasIcon className="text-[100px] text-light-blue" />
-						<strong
-							class="rounded-lg border-2 border-light-mustard px-[20px] py-[14px] text-semi-dark-blue"
-						>
-							Clases grabadas
-						</strong>
-					</div>
-				</div>
-				<p class="text-center font-semibold text-semi-dark-blue lg:text-xl">
-					Al finalizar cada módulo de estudio, se realizará una evaluación para determinar el nivel
-					de conocimientos adquiridos durante el curso
-				</p>
-			</section>
-			<section
-				class="bg-[url(./img/home/mobile/personas-clase-mobile.webp)] bg-cover bg-no-repeat py-[45px] [background-position:bottom] md:bg-[url(./img/home/tablet/personas-clase-tablet.webp)] md:py-[85px] xl:bg-[url(./img/home/desktop/personas-clase-desktop.webp)]"
-			>
-				<div class="container flex flex-col items-center gap-8">
-					<div class="space-y-2 text-center">
-						<h2 class="text-center text-[18px] font-semibold text-white sm:text-[25px]">
-							CLASES PRESENCIALES
-						</h2>
-						<hr class="h-[3px] w-full bg-white" />
-						<p class="text-4xl font-medium text-light-mustard">Inicio: 12 DE AGOSTO</p>
-					</div>
-					<div
-						class="mx-auto flex max-w-[600px] flex-col items-center gap-4 rounded-xl bg-[#00386B] px-12 py-4 text-white sm:flex-row"
-					>
-						<UbicacionIcon className="flex-none text-[48px] text-light-mustard" />
-						<p class="text-center">
-							Av. Benavides 4828: oficina N° 502 Urbanización Las Gardenias - Santiago de Surco
-							provincia y departamento de Lima
-						</p>
-					</div>
-					<div class="text-white">
-						<div class="flex gap-[30px]">
-							<HorarioIcon className="text-[71px]" />
-							<div class="h-[90px] w-[4px] bg-white"></div>
-							<div>
-								<strong class="text-2xl">Turno noche</strong>
-								<p>Lunes a Viernes</p>
-								<p>6:00 P.M. a 10:00 P.M.</p>
-							</div>
-						</div>
-						<p class="mt-4 text-center font-semibold">Duración: 2 meses y medio</p>
-					</div>
-				</div>
-			</section>
+			<Presentacion />
+			<TendrasAcceso />
+			<Turno />
 			<Temario />
-			<section class="container">
-				<div class="mx-auto flex max-w-[886px] flex-col items-center gap-6 md:flex-row md:gap-0">
-					<div class="text-[18px] font-bold lg:text-[21px]">
-						<span class="text-semi-dark-blue"
-							>Certifícate, <br /> Obtén tu código <br /> y haz mención en:</span
-						>
-						<div
-							class="mt-4 rounded-[50px] bg-lime-green px-[31px] py-[12px] text-white md:rounded-[50px_0_0_50px]"
-						>
-							Vivienda, locales comerciales o lotes de terrenos
-						</div>
-					</div>
-					<OptimizeImage
-						stylesPicture="max-w-[500px]"
-						srcMobile="/home/mobile/ejecutivo-mobile.webp"
-						srcTablet="/home/tablet/ejecutivo-tablet.webp"
-						srcDesktop="/home/desktop/ejecutivo-desktop.webp"
-						alt="Ejecutivo"
-					/>
-				</div>
-			</section>
+			<Certificate />
+			<Contacto />
 		</main>
+		<Footer />
 	</body>
 </html>

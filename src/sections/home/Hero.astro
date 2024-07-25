@@ -1,9 +1,10 @@
 ---
+import { SolicitarInformacion } from '@/components/forms/SolicitarInformacion'
 import { OptimizeImage } from '@/components/shared/OptimizeImage'
 ---
 
 <section
-	class="bg-[url(./img/home/mobile/hero-mobile.webp)] bg-cover bg-no-repeat py-[45px] [background-position:bottom] md:bg-[url(./img/home/tablet/hero-tablet.webp)] md:py-[85px] xl:bg-[url(./img/home/desktop/hero-desktop.webp)]"
+	class="bg-[url(/img/home/mobile/hero-mobile.webp)] bg-cover bg-no-repeat py-[45px] [background-position:bottom] md:bg-[url(/img/home/tablet/hero-tablet.webp)] md:py-[85px] xl:bg-[url(/img/home/desktop/hero-desktop.webp)]"
 >
 	<div class="container">
 		<strong class="mb-2 block w-fit rounded-full bg-lime-green px-3 py-1 text-semi-dark-blue">
@@ -28,54 +29,12 @@ import { OptimizeImage } from '@/components/shared/OptimizeImage'
 			class="relative max-w-[350px] overflow-hidden rounded-[30px] p-[21px] text-white md:max-w-[400px] md:p-[31px]"
 		>
 			<div
-				class="absolute inset-0 bg-[url(./img/home/mobile/fondo-edificios-mobile.webp)] bg-cover bg-center md:bg-[url(./img/home/tablet/fondo-edificios-tablet.webp)] xl:bg-[url(./img/home/desktop/fondo-edificios-desktop.webp)]"
+				class="absolute inset-0 bg-[url(/img/home/mobile/fondo-edificios-mobile.webp)] bg-cover bg-center md:bg-[url(/img/home/tablet/fondo-edificios-tablet.webp)] xl:bg-[url(/img/home/desktop/fondo-edificios-desktop.webp)]"
 			>
 			</div>
 			<!-- Overlay semitransparente -->
 			<div class="absolute inset-0 bg-semi-dark-blue bg-opacity-80"></div>
-			<div class="relative z-10 space-y-6">
-				<h2 class="text-center text-[20px] font-semibold">SOLICITAR INFORMACIÓN</h2>
-				<form action="" class="flex flex-col gap-4">
-					<input
-						type="text"
-						placeholder="Nombre"
-						required
-						class="rounded-lg border-2 border-white bg-transparent px-4 py-2 text-white outline-none placeholder:text-white"
-					/>
-					<input
-						required
-						type="email"
-						placeholder="Correo"
-						class="rounded-lg border-2 border-white bg-transparent px-4 py-2 text-white outline-none placeholder:text-white"
-					/>
-					<input
-						type="number"
-						placeholder="Celular"
-						class="rounded-lg border-2 border-white bg-transparent px-4 py-2 text-white outline-none placeholder:text-white"
-						required
-					/>
-					<select
-						name="select"
-						class="rounded-lg border-2 border-white bg-transparent px-4 py-2 text-white outline-none placeholder:text-white"
-						required
-					>
-						<option value="" selected disabled>Selecciona departamento</option>
-						<option value="value1" class="text-gray-500">Value 1</option>
-						<option value="value2" class="text-gray-500">Value 2</option>
-						<option value="value3" class="text-gray-500">Value 3</option>
-					</select>
-					<!-- Checkbox para términos y condiciones -->
-					<div>
-						<input type="checkbox" id="terms" name="terms" required />
-						<label for="terms">Acepto los términos y condiciones</label>
-					</div>
-					<button
-						type="submit"
-						class="mx-auto w-fit rounded-lg bg-light-mustard px-4 py-2 font-semibold text-semi-dark-blue"
-						>Empieza ahora</button
-					>
-				</form>
-			</div>
+			<SolicitarInformacion type="hero" client:visible />
 		</div>
 	</div>
 </section>

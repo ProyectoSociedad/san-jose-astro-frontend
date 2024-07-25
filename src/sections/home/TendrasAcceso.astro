@@ -1,0 +1,43 @@
+---
+import { AulaVirttualIcon } from '@/components/icons/AulaVirttualIcon'
+import { ClasesGrabadasIcon } from '@/components/icons/ClasesGrabadasIcon'
+import { MaterialesDictadosIcon } from '@/components/icons/MaterialesDictadosIcon'
+---
+
+<section class="container py-[33px] lg:py-[66px]">
+	<h2 class="text-center text-[18px] font-semibold text-semi-dark-blue sm:text-[25px]">
+		TENDRAS ACCESO A:
+	</h2>
+	<div
+		class="mx-auto my-[43px] grid max-w-[880px] gap-[25px] sm:grid-cols-2 sm:gap-y-[50px] lg:grid-cols-3 lg:gap-[77px]"
+	>
+		<div class="flex flex-col items-center gap-[20px]">
+			<AulaVirttualIcon className="text-[100px] text-light-blue" />
+			<strong
+				class="rounded-lg border-2 border-light-mustard px-[20px] py-[14px] text-semi-dark-blue"
+			>
+				Aula virtual
+			</strong>
+		</div>
+		<div class="flex flex-col items-center gap-[20px]">
+			<MaterialesDictadosIcon className="text-[100px] text-light-blue" />
+			<strong
+				class="rounded-lg border-2 border-light-mustard px-[20px] py-[14px] text-semi-dark-blue"
+			>
+				Materiales didácticos
+			</strong>
+		</div>
+		<div class="col-span-full flex flex-col items-center gap-[20px] lg:col-span-1">
+			<ClasesGrabadasIcon className="text-[100px] text-light-blue" />
+			<strong
+				class="rounded-lg border-2 border-light-mustard px-[20px] py-[14px] text-semi-dark-blue"
+			>
+				Clases grabadas
+			</strong>
+		</div>
+	</div>
+	<p class="text-center font-semibold text-semi-dark-blue lg:text-xl">
+		Al finalizar cada módulo de estudio, se realizará una evaluación para determinar el nivel de
+		conocimientos adquiridos durante el curso
+	</p>
+</section>

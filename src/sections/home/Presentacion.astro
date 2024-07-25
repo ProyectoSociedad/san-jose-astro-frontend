@@ -1,0 +1,64 @@
+---
+import { OptimizeImage } from '@/components/shared/OptimizeImage'
+---
+
+<section class="relative pt-[40px] lg:py-[80px]" id="presentacion">
+	<div
+		class="absolute inset-0 bg-[url(/img/home/mobile/fondo-edificios-mobile.webp)] bg-cover bg-center md:bg-[url(/img/home/tablet/fondo-edificios-tablet.webp)] xl:bg-[url(/img/home/desktop/fondo-edificios-desktop.webp)]"
+	>
+		<div class="absolute inset-0 bg-light-blue bg-opacity-80"></div>
+	</div>
+	<div
+		class="container relative z-10 grid items-center gap-12 text-white lg:grid-cols-[450px_1fr] lg:gap-0 xl:grid-cols-[650px_1fr]"
+	>
+		<div class="relative p-[15px] lg:order-2 lg:p-[30px]">
+			<svg
+				class="absolute left-0 top-0"
+				xmlns="http://www.w3.org/2000/svg"
+				width="26"
+				height="26"
+				viewBox="0 0 26 26"
+				fill="none"
+			>
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M26 5V0H5H0V5V26H5V5H26Z" fill="#C4C400"
+				></path>
+			</svg>
+			<div class="space-y-4 text-justify lg:space-y-8 lg:text-xl">
+				<p>
+					Actualmente, el sector de Inmobiliaria y Construcción se destaca como uno de los mayores
+					generadores de empleo, impulsando significativamente la economía nacional. La demanda de
+					profesionales especializados en este ámbito se extiende a lo largo de todo el Perú.
+				</p>
+				<p>
+					En colaboración con el Ministerio de Vivienda, Construcción y Saneamiento, hemos
+					desarrollado el <span class="text-light-mustard"
+						>Curso de Especialización de Agente Inmobiliario</span
+					>, diseñado específicamente para capacitarte y formarte como un experto en la
+					intermediación y asesoría inmobiliaria, preparándote para sobresalir en este dinámico
+					sector.
+				</p>
+			</div>
+			<svg
+				class="absolute bottom-0 right-0"
+				xmlns="http://www.w3.org/2000/svg"
+				width="26"
+				height="26"
+				viewBox="0 0 26 26"
+				fill="none"
+			>
+				<path
+					fill-rule="evenodd"
+					clip-rule="evenodd"
+					d="M-4.37114e-07 21L0 26L21 26L26 26L26 21L26 0L21 4.37114e-07L21 21L-4.37114e-07 21Z"
+					fill="#C4C400"></path>
+			</svg>
+		</div>
+		<OptimizeImage
+			stylesPicture="ml-[-1rem] md:ml-[-2rem] max-w-[350px] lg:ml-[-3rem] xl:max-w-[550px] xl:ml-[-4rem] lg:relative lg:top-[80px]"
+			srcMobile="/home/mobile/personas-mobile.webp"
+			srcTablet="/home/tablet/personas-tablet.webp"
+			srcDesktop="/home/desktop/personas-desktop.webp"
+			alt="Personas"
+		/>
+	</div>
+</section>
