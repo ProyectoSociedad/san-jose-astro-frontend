@@ -1,25 +1,82 @@
 ---
-import { AulaVirttualIcon } from '@/components/icons/AulaVirttualIcon'
-import { ClasesGrabadasIcon } from '@/components/icons/ClasesGrabadasIcon'
+// import { AulaVirttualIcon } from '@/components/icons/AulaVirttualIcon'
+// import { ClasesGrabadasIcon } from '@/components/icons/ClasesGrabadasIcon'
 import { MaterialesDictadosIcon } from '@/components/icons/MaterialesDictadosIcon'
+import { FormacionIntegralIcon } from '@/components/icons/FormacionIntegralIcon'
+import { DocentesExpertosIcon } from '@/components/icons/DocentesExpertosIcon'
+import { MetodologiaPracticaIcon } from '@/components/icons/MetodologiaPracticaIcon'
+import { NetworkingProfesionalIcon } from '@/components/icons/NetworkingProfesionalIcon'
+import { ActualizacionPermanenteIcon } from '@/components/icons/ActualizacionPermanenteIcon'
+import { BolsaTrabajoIcon } from '@/components/icons/BolsaTrabajoIcon'
+import { OptimizeImage } from '@/components/shared/OptimizeImage'
+
+const beneficios = [
+	{
+		title: 'Formación Integral',
+		description:
+			'Nuestro enfoque es panorámico, abarcando todos los aspectos claves para un ejercicio exitoso en las actividades en las que se desarrolla agente inmobiliario.',
+		icon: FormacionIntegralIcon
+	},
+	{
+		title: 'Docentes Expertos',
+		description:
+			'Aprende de profesionales con amplia experiencia en el sector inmobiliario que te proporcionarán una visión práctica y real del mercado.',
+		icon: DocentesExpertosIcon
+	},
+	{
+		title: 'Metodología Práctica',
+		description:
+			'Nuestro enfoque incluye casos de estudio, simulaciones de ventas y ejercicios prácticos que te permitirán aplicar los conocimientos adquiridos en situaciones reales.',
+		icon: MetodologiaPracticaIcon
+	},
+	{
+		title: 'Networking Profesional',
+		description:
+			'Conéctate con otros profesionales del sector, comparte experiencias y establece relaciones que pueden abrirte nuevas oportunidades de negocio y colaboración. Mediante un grupo de Whatsapp exclusivo para nuestros alumnos.',
+		icon: NetworkingProfesionalIcon
+	},
+	{
+		title: 'Material Especializado',
+		description:
+			'En el módulo de aspectos legales accederás a más de 15 Modelos de contratos Inmobiliarios, material didáctico especializado, bibliografía actualizada que te ayudarán a complementar tu formación y estar al día con las tendencias del mercado.',
+		icon: MaterialesDictadosIcon
+	},
+	{
+		title: 'Actualización Permanente',
+		description:
+			'Mantente al tanto de las últimas novedades y tendencias del sector inmobiliario con nuestro taller de marketing digital y cursos virtuales.',
+		icon: ActualizacionPermanenteIcon
+	},
+	{
+		title: 'Bolsa de Trabajo',
+		description:
+			'Accede a nuestra bolsa de trabajo y conecta con empresas y empleadores que buscan agentes inmobiliarios capacitados y certificados.',
+		icon: BolsaTrabajoIcon
+	}
+]
 ---
 
 <section class="container py-[33px] lg:py-[66px]">
-	<h2 class="text-center text-[18px] font-semibold text-semi-dark-blue sm:text-[25px]">
-		TENDRAS ACCESO A:
+	<h2 class="text-center text-[18px] font-semibold uppercase text-semi-dark-blue sm:text-[25px]">
+		Beneficios de Estudiar el <br /> Curso de Agente Inmobiliario con Nosotros:
 	</h2>
 	<div
-		class="mx-auto my-[43px] grid max-w-[880px] gap-[25px] sm:grid-cols-2 sm:gap-y-[50px] lg:grid-cols-3 lg:gap-[77px]"
+		class="mx-auto my-[43px] flex max-w-[1300px] flex-wrap justify-center gap-[25px] sm:gap-y-[50px] lg:gap-[77px]"
 	>
-		<div class="flex flex-col items-center gap-[20px]">
-			<AulaVirttualIcon className="text-[100px] text-light-blue" />
-			<strong
-				class="rounded-lg border-2 border-light-mustard px-[20px] py-[14px] text-semi-dark-blue"
-			>
-				Aula virtual
-			</strong>
-		</div>
-		<div class="flex flex-col items-center gap-[20px]">
+		{
+			beneficios.map((beneficio) => (
+				<div class="flex w-[400px] flex-col items-center gap-[20px]">
+					{<beneficio.icon className="text-[100px] text-light-blue" />}
+
+					<strong class="rounded-lg border-2 border-light-mustard px-[20px] py-[14px] text-semi-dark-blue">
+						{beneficio.title}
+					</strong>
+					<p class="text-justify text-semi-dark-blue">{beneficio.description}</p>
+				</div>
+			))
+		}
+
+		<!-- <div class="flex flex-col items-center gap-[20px]">
 			<MaterialesDictadosIcon className="text-[100px] text-light-blue" />
 			<strong
 				class="rounded-lg border-2 border-light-mustard px-[20px] py-[14px] text-semi-dark-blue"
@@ -34,10 +91,30 @@ import { MaterialesDictadosIcon } from '@/components/icons/MaterialesDictadosIco
 			>
 				Clases grabadas
 			</strong>
+		</div> -->
+	</div>
+	<div class="mx-auto grid max-w-[1200px] items-center gap-7 py-12 md:grid-cols-2">
+		<OptimizeImage
+			srcMobile="/home/mobile/certificado-san-jose-del-sur-mobile.webp"
+			srcTablet="/home/tablet/certificado-san-jose-del-sur-tablet.webp"
+			srcDesktop="/home/desktop/certificado-san-jose-del-sur-desktop.webp"
+			alt="Personas"
+		/>
+		<div class="space-y-4">
+			<div class="w-fit">
+				<h2
+					class="text-center text-[18px] font-semibold uppercase text-semi-dark-blue sm:text-[25px]"
+				>
+					CERTIFICACIÓN
+				</h2>
+				<hr class="h-[3px] w-full bg-semi-dark-blue" />
+			</div>
+			<p class="text-justify text-semi-dark-blue">
+				o Al finalizar y aprobar satisfactoriamente el curso, obtendrás el Registro de <span
+					class="font-bold text-light-blue">Agente Inmobiliario</span
+				> del Ministerio de Vivienda Construcción y Saneamiento donde podrás ejercer la actividad de
+				agente inmobiliario en todo el Perú.
+			</p>
 		</div>
 	</div>
-	<p class="text-center font-semibold text-semi-dark-blue lg:text-xl">
-		Al finalizar cada módulo de estudio, se realizará una evaluación para determinar el nivel de
-		conocimientos adquiridos durante el curso
-	</p>
 </section>

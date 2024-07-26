@@ -52,6 +52,10 @@ const accordionData = [
 			'Lectura, expresión gráfica e interpretación de planos',
 			'Arquitectura de interiores'
 		]
+	},
+	{
+		title: 'Taller Integrador',
+		subSections: []
 	}
 ]
 ---
@@ -92,7 +96,7 @@ const accordionData = [
 									<ChevronDownIcon />
 								</i>
 							</summary>
-							<ul class="mt-4 flex list-disc flex-col gap-2 pl-4 font-semibold text-semi-dark-blue">
+							<ul class="mt-4 flex list-decimal flex-col gap-2 pl-4 font-semibold text-semi-dark-blue">
 								{info.subSections.map((sub) => (
 									<li>{sub}</li>
 								))}
@@ -109,7 +113,7 @@ const accordionData = [
 				return (
 					<div class="rounded-xl border-2 border-light-mustard px-8 py-4 text-semi-dark-blue">
 						<strong>{info.title}</strong>
-						<ul class="mt-4 flex list-disc flex-col gap-2 pl-4 font-semibold text-semi-dark-blue">
+						<ul class="mt-4 flex list-decimal flex-col gap-2 pl-4 font-semibold text-semi-dark-blue">
 							{info.subSections.map((sub) => (
 								<li>{sub}</li>
 							))}

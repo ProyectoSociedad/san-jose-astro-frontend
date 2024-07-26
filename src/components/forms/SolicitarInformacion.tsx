@@ -1,3 +1,4 @@
+import useRecaptcha from '@/hooks/useRecaptcha'
 import { departamentos, turnos } from '@/selects/data'
 import { useState } from 'react'
 
@@ -14,6 +15,8 @@ export const SolicitarInformacion = ({ type }: Props) => {
 		terms: false
 	})
 	const [loading, setLoading] = useState(false)
+	// Aquí puedes manejar el envío a la API
+	const recaptchaToken = useRecaptcha('submit_form')
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
 		const { name, value, type } = e.target
 		if (type === 'checkbox') {
@@ -33,11 +36,10 @@ export const SolicitarInformacion = ({ type }: Props) => {
 		e.preventDefault()
 
 		setLoading(true)
-		// Aquí puedes manejar el envío a la API
 
 		try {
 			const response = await fetch(
-				'https://cursoagenteinmobiliarioperu.com/consultas-2/seguimiento.php',
+				'https://cursoagenteinmobiliarioperu.com/consultas/seguimiento.php',
 				{
 					method: 'POST',
 					headers: {
@@ -50,7 +52,8 @@ export const SolicitarInformacion = ({ type }: Props) => {
 						depa: formData.departamento,
 						prov: '',
 						dis: '',
-						turno: formData.turno
+						turno: formData.turno,
+						'g-recaptcha-response': recaptchaToken
 					})
 				}
 			)

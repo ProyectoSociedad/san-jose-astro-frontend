@@ -28,9 +28,46 @@ import Turno from '@/sections/home/Turno.astro'
 			name="description"
 			content="San José del Sur ofrece un Curso de Especialización de Agente Inmobiliario en colaboración con el Ministerio de Vivienda. Prepárate para sobresalir en el sector inmobiliario y construcción con nuestra formación especializada."
 		/>
+
+		<!-- Google tag (gtag.js) - Google Analytics -->
 		<script
+			is:inline
+			type="text/partytown"
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-VSJEL9Z486"></script>
+		<script is:inline type="text/partytown">
+			window.dataLayer = window.dataLayer || []
+			function gtag() {
+				window.dataLayer.push(arguments)
+			}
+			window.gtag('js', new Date())
+			window.gtag('config', 'G-VSJEL9Z486')
+		</script>
+
+		<!-- Google Tag Manager -->
+		<script is:inline type="text/partytown">
+			;(function (w, d, s, l, i) {
+				w[l] = w[l] || []
+				w[l].push({
+					'gtm.start': new Date().getTime(),
+					event: 'gtm.js'
+				})
+				var f = d.getElementsByTagName(s)[0],
+					j = d.createElement(s),
+					dl = l != 'dataLayer' ? '&l=' + l : ''
+				j.async = true
+				j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl
+				f.parentNode.insertBefore(j, f)
+			})(window, document, 'script', 'dataLayer', 'GTM-P6M48Z38')
+		</script>
+		<!-- End Google Tag Manager -->
+
+		<!-- reCAPTCHA -->
+		<script
+			is:inline
 			src="https://www.google.com/recaptcha/api.js?render=6LchufsnAAAAAKgEzDQWSH1nLyG_1ttI-7tDNvl8"
-		></script>
+			async
+			defer></script>
 	</head>
 	<body>
 		<div
