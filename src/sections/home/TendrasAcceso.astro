@@ -61,17 +61,19 @@ const beneficios = [
 		Beneficios de Estudiar el <br /> Curso de Agente Inmobiliario con Nosotros:
 	</h2>
 	<div
-		class="mx-auto my-[43px] flex max-w-[1300px] flex-wrap justify-center gap-[25px] sm:gap-y-[50px] lg:gap-[77px]"
+		class="mx-auto my-[43px] grid max-w-[320px] gap-[25px] sm:max-w-[initial] sm:grid-cols-2 sm:gap-10 sm:gap-y-[50px] lg:grid-cols-3 lg:gap-[77px] xl:max-w-[1300px]"
 	>
 		{
-			beneficios.map((beneficio) => (
-				<div class="flex w-[400px] flex-col items-center gap-[20px]">
-					{<beneficio.icon className="text-[100px] text-light-blue" />}
+			beneficios.map((beneficio, i) => (
+				<div class={`${i + 1 === 7 ? 'col-span-full' : ''}`}>
+					<div class={`mx-auto flex max-w-[320px] flex-col items-center gap-[20px]`}>
+						{<beneficio.icon className="text-[100px] text-light-blue" />}
 
-					<strong class="rounded-lg border-2 border-light-mustard px-[20px] py-[14px] text-semi-dark-blue">
-						{beneficio.title}
-					</strong>
-					<p class="text-justify text-semi-dark-blue">{beneficio.description}</p>
+						<strong class="rounded-lg border-2 border-light-mustard px-[20px] py-[14px] text-semi-dark-blue">
+							{beneficio.title}
+						</strong>
+						<p class="text-justify text-semi-dark-blue">{beneficio.description}</p>
+					</div>
 				</div>
 			))
 		}
