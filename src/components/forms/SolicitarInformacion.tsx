@@ -16,7 +16,7 @@ export const SolicitarInformacion = ({ type }: Props) => {
 	})
 	const [loading, setLoading] = useState(false)
 	// Aquí puedes manejar el envío a la API
-	const recaptchaToken = useRecaptcha('submit_form')
+	const { loadAndExecuteRecaptcha } = useRecaptcha()
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
 		const { name, value, type } = e.target
 		if (type === 'checkbox') {
@@ -36,6 +36,9 @@ export const SolicitarInformacion = ({ type }: Props) => {
 		e.preventDefault()
 
 		setLoading(true)
+		// Cargar y ejecutar reCAPTCHA al enviar el formulario
+		const recaptchaToken = await loadAndExecuteRecaptcha('submit_form')
+		console.log({ recaptchaToken })
 
 		try {
 			const response = await fetch(
