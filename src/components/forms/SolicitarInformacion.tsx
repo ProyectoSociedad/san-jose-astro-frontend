@@ -32,63 +32,73 @@ export const SolicitarInformacion = ({ type }: Props) => {
 			}))
 		}
 	}
+	const gtagSendEvent = (callback: () => void) => {
+    window.gtag('event', 'conversion_event_submit_lead_form', {
+      'event_callback': callback,
+      'event_timeout': 2000
+    });
+  };
+
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 
 		setLoading(true)
 		// Cargar y ejecutar reCAPTCHA al enviar el formulario
 		const recaptchaToken = await loadAndExecuteRecaptcha('submit_form')
-		console.log({ recaptchaToken })
+		const redirectCallback = async () => {
 
-		try {
-			const response = await fetch(
-				'https://cursoagenteinmobiliarioperu.com/consultas/seguimiento.php',
-				{
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify({
-						nomb_persona: formData.nombre,
-						email_persona: formData.correo,
-						cel_persona: formData.celular,
-						depa: formData.departamento,
-						prov: '',
-						dis: '',
-						turno: formData.turno,
-						'g-recaptcha-response': recaptchaToken
-					})
+			try {
+				const response = await fetch(
+					'https://cursoagenteinmobiliarioperu.com/consultas/seguimiento.php',
+					{
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({
+							nomb_persona: formData.nombre,
+							email_persona: formData.correo,
+							cel_persona: formData.celular,
+							depa: formData.departamento,
+							prov: '',
+							dis: '',
+							turno: formData.turno,
+							'g-recaptcha-response': recaptchaToken
+						})
+					}
+				)
+	
+				if (!response.ok) {
+					throw new Error('Network response was not ok')
 				}
-			)
-
-			if (!response.ok) {
-				throw new Error('Network response was not ok')
+	
+				const result = await response.json()
+				console.log('Fetch success!')
+				console.log(result)
+				// Mostrar una alerta de éxito
+				alert('Los datos se registraron correctamente.')
+				// Habilitar el botón y restaurar el texto
+				setLoading(false)
+	
+				// Mostrar el modal (este es un ejemplo de cómo podrías manejarlo)
+				// Asegúrate de tener implementado el modal en tu componente
+	
+				// Resetear el formulario
+				setFormData({
+					nombre: '',
+					correo: '',
+					celular: '',
+					departamento: '',
+					turno: '',
+					terms: false
+				})
+			} catch (error) {
+				console.error('Error al enviar los datos:', error)
+				setLoading(false)
 			}
 
-			const result = await response.json()
-			console.log('Fetch success!')
-			console.log(result)
-			// Mostrar una alerta de éxito
-			alert('Los datos se registraron correctamente.')
-			// Habilitar el botón y restaurar el texto
-			setLoading(false)
-
-			// Mostrar el modal (este es un ejemplo de cómo podrías manejarlo)
-			// Asegúrate de tener implementado el modal en tu componente
-
-			// Resetear el formulario
-			setFormData({
-				nombre: '',
-				correo: '',
-				celular: '',
-				departamento: '',
-				turno: '',
-				terms: false
-			})
-		} catch (error) {
-			console.error('Error al enviar los datos:', error)
-			setLoading(false)
 		}
+		gtagSendEvent(redirectCallback);
 	}
 	return (
 		<>

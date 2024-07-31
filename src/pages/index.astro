@@ -1,9 +1,6 @@
 ---
 import '@/styles/globals.css'
-import { FacebookIcon } from '@/components/icons/FacebookIcon'
-import { TikTokIcon } from '@/components/icons/TikTokIcon'
-import { InstagramIcon } from '@/components/icons/InstagramIcon'
-import { WhatsappIcon } from '@/components/icons/WhatsappIcon'
+
 import Footer from '@/components/shared/Footer.astro'
 import { Header } from '@/components/shared/Header'
 
@@ -70,26 +67,11 @@ import Turno from '@/sections/home/Turno.astro'
 			defer></script> -->
 	</head>
 	<body>
-		<div
+		<!-- <div
 			class="fixed right-0 top-[18rem] z-30 rounded-[18px_0_0_18px] bg-light-mustard px-[15px] py-[20px] text-[25px] text-white"
 		>
-			<ul class="flex flex-col gap-[18px]">
-				<li>
-					<a href="https://www.facebook.com/CursoAgenteInmobiliarioPeru" target="_blank"
-						><FacebookIcon /></a
-					>
-				</li>
-				<li>
-					<a href="https://www.instagram.com/cursoagenteinmobiliarioperu/" target="_blank"
-						><InstagramIcon /></a
-					>
-				</li>
-				<li><a href="https://wa.link/44lnxe" target="_blank"><WhatsappIcon /></a></li>
-				<li>
-					<a href="https://www.tiktok.com/@agente.inmobiliario24" target="_blank"><TikTokIcon /></a>
-				</li>
-			</ul>
-		</div>
+			
+		</div> -->
 		<Header client:load />
 		<main>
 			<Hero />

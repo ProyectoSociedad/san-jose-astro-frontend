@@ -1,12 +1,20 @@
 ---
 import { SolicitarInformacion } from '@/components/forms/SolicitarInformacion'
+import { OptimizeImage } from '@/components/shared/OptimizeImage'
 ---
 
 <section
-	class="bg-light-blue bg-[url(/img/home/mobile/fondo-edificios-mobile.webp)] bg-cover bg-no-repeat py-[45px] [background-position:top] md:bg-[url(/img/home/tablet/fondo-edificios-tablet.webp)] md:py-[85px] lg:py-[103px] xl:bg-[url(/img/home/desktop/fondo-edificios-desktop.webp)]"
+	class="relative z-10 bg-light-blue py-[45px] md:py-[85px] lg:py-[103px] xl:py-[183px]"
 	id="contacto"
 >
 	<div class="container">
 		<SolicitarInformacion type="contacto" client:visible />
 	</div>
+	<OptimizeImage
+		stylesPicture="absolute bottom-0 z-[-1]"
+		srcMobile="/home/mobile/fondo-edificios-mobile.webp"
+		srcTablet="/home/tablet/fondo-edificios-tablet.webp"
+		srcDesktop="/home/desktop/fondo-edificios-desktop.webp"
+		alt="Edificios"
+	/>
 </section>

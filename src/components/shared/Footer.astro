@@ -1,6 +1,9 @@
 ---
-import { WhatsappIcon } from '@/components/icons/WhatsappIcon'
 import { CorreoIcon } from '@/components/icons/CorreoIcon'
+import { FacebookIcon } from '@/components/icons/FacebookIcon'
+import { TikTokIcon } from '@/components/icons/TikTokIcon'
+import { InstagramIcon } from '@/components/icons/InstagramIcon'
+import { WhatsappIcon } from '@/components/icons/WhatsappIcon'
 ---
 
 <footer class="bg-semi-dark-blue py-[40px] text-white">
@@ -24,9 +27,27 @@ import { CorreoIcon } from '@/components/icons/CorreoIcon'
 				</li>
 			</ul>
 		</div>
-		<div class="flex items-center gap-[15px]">
-			<CorreoIcon className="text-[35px]" />
-			<a href="mailto:curso@agenteinmobiliario.com">curso@agenteinmobiliario.com</a>
+		<div class="flex flex-col">
+			<div class="flex items-center gap-[15px]">
+				<CorreoIcon className="text-[35px]" />
+				<a href="mailto:curso@agenteinmobiliario.com">curso@agenteinmobiliario.com</a>
+			</div>
+			<ul class="mt-4 flex gap-[18px] text-[20px]">
+				<li>
+					<a href="https://www.facebook.com/CursoAgenteInmobiliarioPeru" target="_blank"
+						><FacebookIcon /></a
+					>
+				</li>
+				<li>
+					<a href="https://www.instagram.com/cursoagenteinmobiliarioperu/" target="_blank"
+						><InstagramIcon /></a
+					>
+				</li>
+				<li><a href="https://wa.link/44lnxe" target="_blank"><WhatsappIcon /></a></li>
+				<li>
+					<a href="https://www.tiktok.com/@agente.inmobiliario24" target="_blank"><TikTokIcon /></a>
+				</li>
+			</ul>
 		</div>
 	</div>
 </footer>

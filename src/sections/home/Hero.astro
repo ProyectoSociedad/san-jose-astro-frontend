@@ -4,36 +4,37 @@ import { OptimizeImage } from '@/components/shared/OptimizeImage'
 ---
 
 <section
-	class="bg-[url(/img/home/mobile/hero-mobile.webp)] bg-cover bg-no-repeat py-[45px] [background-position:bottom] md:bg-[url(/img/home/tablet/hero-tablet.webp)] md:py-[85px] xl:bg-[url(/img/home/desktop/hero-desktop.webp)]"
+	class="bg-[url(/img/home/mobile/hero-mobile.webp)] bg-cover bg-center bg-no-repeat py-[45px] md:bg-[url(/img/home/tablet/hero-tablet.webp)] md:py-[85px] xl:bg-[url(/img/home/desktop/hero-desktop.webp)]"
 >
-	<div class="container">
-		<strong class="mb-2 block w-fit rounded-full bg-lime-green px-3 py-1 text-semi-dark-blue">
-			CURSO
-		</strong>
-		<h1
-			class="text-[35px] font-bold leading-[35px] text-semi-dark-blue md:text-[50px] md:leading-[50px] xl:text-[75px] xl:leading-[75px]"
-		>
-			AGENTE <br /> INMOBILIARIO
-		</h1>
-		<div class="my-6 md:my-12">
-			<span class="font-semibold text-semi-dark-blue md:text-2xl">Convenio con:</span>
-			<OptimizeImage
-				stylesPicture="max-w-[380px]"
-				srcMobile="/home/mobile/logo-ministerio-mobile.webp"
-				srcTablet="/home/tablet/logo-ministerio-tablet.webp"
-				srcDesktop="/home/desktop/logo-ministerio-desktop.webp"
-				alt="Logo Ministerio"
-			/>
-		</div>
-		<div
-			class="relative max-w-[350px] overflow-hidden rounded-[30px] p-[21px] text-white md:max-w-[400px] md:p-[31px]"
-		>
-			<div
-				class="absolute inset-0 bg-[url(/img/home/mobile/fondo-edificios-mobile.webp)] bg-cover bg-center md:bg-[url(/img/home/tablet/fondo-edificios-tablet.webp)] xl:bg-[url(/img/home/desktop/fondo-edificios-desktop.webp)]"
+	<div class="container grid items-center lg:grid-cols-2">
+		<div>
+			<strong class="mb-2 block w-fit rounded-full bg-lime-green px-3 py-1 text-semi-dark-blue">
+				CURSO
+			</strong>
+			<h1
+				class="flex flex-col gap-2 text-[35px] font-bold leading-[35px] text-semi-dark-blue md:text-[50px] md:leading-[50px] xl:text-[75px] xl:leading-[75px]"
 			>
+				<span class="w-fit rounded-lg bg-white px-2 py-1">AGENTE</span>
+				<span class="w-fit rounded-lg bg-white px-2 py-1">INMOBILIARIO</span>
+			</h1>
+			<div class="my-6 space-y-2 md:my-12 md:space-y-4">
+				<span class="rounded-lg bg-white px-2 py-1 font-semibold text-semi-dark-blue md:text-2xl"
+					>Convenio con:</span
+				>
+				<OptimizeImage
+					stylesPicture="max-w-[280px] md:max-w-[380px]"
+					srcMobile="/home/mobile/logo-ministerio-mobile.webp"
+					srcTablet="/home/tablet/logo-ministerio-tablet.webp"
+					srcDesktop="/home/desktop/logo-ministerio-desktop.webp"
+					alt="Logo Ministerio"
+				/>
 			</div>
-			<!-- Overlay semitransparente -->
-			<div class="absolute inset-0 bg-semi-dark-blue bg-opacity-80"></div>
+		</div>
+
+		<div
+			class="relative mx-auto w-full max-w-[350px] overflow-hidden rounded-[30px] p-[21px] text-white md:max-w-[400px] md:p-[31px] xl:max-w-[480px]"
+		>
+			<div class="absolute inset-0 bg-light-blue opacity-80"></div>
 			<SolicitarInformacion type="hero" client:visible />
 		</div>
 	</div>

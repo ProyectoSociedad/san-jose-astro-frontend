@@ -1,9 +1,9 @@
 ---
 import { ChevronDownIcon } from '@/components/icons/ChevronDownIcon'
-import { OptimizeImage } from '@/components/shared/OptimizeImage'
+
 const accordionData = [
 	{
-		title: 'Módulo estudios generales',
+		title: 'MÓDULO 1. Estudios generales',
 		subSections: [
 			'Liderazgo y desarrollo organizacional',
 			'Ética en las actividades inmobiliarias',
@@ -13,7 +13,7 @@ const accordionData = [
 		]
 	},
 	{
-		title: 'Modulo aspectos legales aplicables a la gestión inmobiliaria',
+		title: 'MÓDULO 2. Aspectos legales aplicables a la gestión inmobiliaria',
 		subSections: [
 			'Derecho Inmobiliario',
 			'Derecho Civil Patrimonial',
@@ -24,7 +24,7 @@ const accordionData = [
 		]
 	},
 	{
-		title: 'Modulo aspectos financieros, contables, tributarios, estadísticos y de avaluó',
+		title: 'MÓDULO 3. Aspectos financieros, contables, tributarios, estadísticos y de avaluó',
 		subSections: [
 			'Aspectos Tributarios',
 			'Técnicas de tasación de inmuebles',
@@ -34,7 +34,8 @@ const accordionData = [
 		]
 	},
 	{
-		title: 'Modulo administración y marketing, comercialización, negociación y gestión comercial',
+		title:
+			'MÓDULO 4. Administración y marketing, comercialización, negociación y gestión comercial',
 		subSections: [
 			'Marketing inmobiliario',
 			'Administración inmobiliaria',
@@ -45,7 +46,7 @@ const accordionData = [
 		]
 	},
 	{
-		title: 'Modulo urbanismo y arquitectura',
+		title: 'MÓDULO 5. Urbanismo y arquitectura',
 		subSections: [
 			'Planificación y Desarrollo Urbano',
 			'Catastro urbano',
@@ -54,8 +55,12 @@ const accordionData = [
 		]
 	},
 	{
-		title: 'Taller Integrador',
-		subSections: []
+		title: 'BENEFICIOS',
+		subSections: [
+			'Taller integrador y taller de Marketing digital',
+			'Curso contratos inmobiliarios',
+			'Modelos de contratos inmobiliarios'
+		]
 	}
 ]
 ---
@@ -84,7 +89,7 @@ const accordionData = [
 </style>
 <section class="container relative py-[33px] lg:py-[66px]" id="malla-curricular">
 	<h2 class="text-center text-[18px] font-semibold text-semi-dark-blue sm:text-[25px]">TEMARIO</h2>
-	<div class="mx-auto mt-8 grid max-w-[450px] gap-[20px] lg:hidden">
+	<div class="mx-auto mt-8 grid max-w-[850px] gap-[20px]">
 		{
 			accordionData.map((info, i) => {
 				return (
@@ -106,33 +111,6 @@ const accordionData = [
 				)
 			})
 		}
-	</div>
-	<div class="mx-auto mt-[65px] hidden max-w-[900px] grid-cols-2 gap-x-[90px] gap-y-[35px] lg:grid">
-		{
-			accordionData.map((info) => {
-				return (
-					<div class="rounded-xl border-2 border-light-mustard px-8 py-4 text-semi-dark-blue">
-						<strong>{info.title}</strong>
-						<ul class="mt-4 flex list-decimal flex-col gap-2 pl-4 font-semibold text-semi-dark-blue">
-							{info.subSections.map((sub) => (
-								<li>{sub}</li>
-							))}
-						</ul>
-					</div>
-				)
-			})
-		}
-	</div>
-	<OptimizeImage
-		stylesPicture="ml-[-1rem] hidden top-[6%] opacity-[0.3] z-[-1] w-[60%] max-w-[760px] md:ml-[-2rem] lg:ml-[-3rem] xl:ml-[-4rem] absolute lg:block"
-		srcMobile="/home/mobile/circulo-mobile.webp"
-		srcTablet="/home/tablet/circulo-tablet.webp"
-		srcDesktop="/home/desktop/circulo-desktop.webp"
-		alt="Temario"
-	/>
-	<div
-		class="absolute left-0 top-[4%] hidden h-[150px] w-[150px] translate-x-[-50%] rounded-full border-[2px] border-light-mustard lg:block"
-	>
 	</div>
 </section>
 <!-- top-[40%] translate-y-[-50%] -->
