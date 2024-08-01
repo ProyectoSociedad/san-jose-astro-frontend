@@ -55,11 +55,12 @@ const accordionData = [
 		]
 	},
 	{
-		title: 'BENEFICIOS',
+		title: 'BENEFICIOS ADICIONALES',
 		subSections: [
 			'Taller integrador y taller de Marketing digital',
 			'Curso contratos inmobiliarios',
-			'Modelos de contratos inmobiliarios'
+			'15 Modelos de contratos inmobiliarios',
+			'Manual del agente inmobiliario'
 		]
 	}
 ]
@@ -93,7 +94,7 @@ const accordionData = [
 		{
 			accordionData.map((info, i) => {
 				return (
-					<div class="rounded-xl border-2 border-light-mustard px-8 py-4">
+					<div class="rounded-xl border-2 border-light-mustard bg-light-mustard px-8 py-4">
 						<details open={i === 0}>
 							<summary class="font-semibold text-semi-dark-blue">
 								{info.title}
