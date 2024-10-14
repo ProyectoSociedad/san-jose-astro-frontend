@@ -6,8 +6,47 @@ import { InstagramIcon } from '@/components/icons/InstagramIcon'
 import { WhatsappIcon } from '@/components/icons/WhatsappIcon'
 ---
 
-<footer class="bg-semi-dark-blue py-[40px] text-white">
-	<div class="container flex flex-wrap items-center justify-center gap-5 sm:justify-between">
+<footer class="mt-[56px] bg-light-blue py-[40px] text-white xl:mt-[68px]">
+	<div class="container">
+		<h3 class="text-center lg:text-start">Contáctanos</h3>
+		<div class="mt-[25px] grid gap-[15px] lg:grid-cols-3">
+			<ul>
+				<li class="flex justify-center gap-[10px] lg:justify-start">
+					<WhatsappIcon className="flex-none text-[18px]" />
+					<div class="grid grid-cols-2 gap-[10px]">
+						<a href="tel:51908885838">+51 908 885 838</a>
+						<a href="tel:51908885821">+51 908 885 821</a>
+						<a href="tel:908885851">+51 908 885 851</a>
+						<a href="tel:908885858">+51 908 885 858</a>
+					</div>
+				</li>
+			</ul>
+			<ul>
+				<li class="flex items-center justify-center gap-[15px]">
+					<CorreoIcon className="text-[18px]" />
+					<a href="mailto:curso@agenteinmobiliario.com">curso@agenteinmobiliario.com</a>
+				</li>
+			</ul>
+			<ul class="mt-4 flex justify-center gap-[18px] text-[20px] lg:justify-end">
+				<li>
+					<a href="https://www.facebook.com/CursoAgenteInmobiliarioPeru" target="_blank"
+						><FacebookIcon /></a
+					>
+				</li>
+				<li>
+					<a href="https://www.instagram.com/cursoagenteinmobiliarioperu/" target="_blank"
+						><InstagramIcon /></a
+					>
+				</li>
+				<li><a href="https://wa.link/44lnxe" target="_blank"><WhatsappIcon /></a></li>
+				<li>
+					<a href="https://www.tiktok.com/@agente.inmobiliario24" target="_blank"><TikTokIcon /></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- <div class="container flex flex-wrap items-center justify-center gap-5 sm:justify-between">
 		<h2 class="text-[18px] font-semibold sm:text-[25px]">CONTACTO</h2>
 		<div class="hidden h-[80px] w-[3px] bg-white sm:block"></div>
 		<div class="flex items-center gap-[15px]">
@@ -49,5 +88,5 @@ import { WhatsappIcon } from '@/components/icons/WhatsappIcon'
 				</li>
 			</ul>
 		</div>
-	</div>
+	</div> -->
 </footer>

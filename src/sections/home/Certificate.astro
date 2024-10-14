@@ -1,36 +1,34 @@
 ---
-import { OptimizeImage } from '@/components/shared/OptimizeImage'
+import { homeImages } from '@/assets/home'
+import { Image } from 'astro:assets'
 ---
 
 <section class="container">
-	<div class="mx-auto flex max-w-[900px] flex-col items-center gap-6 md:gap-0 lg:flex-row">
-		<div class="text-[18px] font-bold lg:text-[21px]">
-			<p class="text-semi-dark-blue">
-				<span class="text-[30px]">CERTIFÍCATE</span>
-				<br /> y obtén tu registro como
-			</p>
-			<div
-				class="mt-4 rounded-[50px] bg-lime-green px-[31px] py-[8px] text-semi-dark-blue lg:rounded-[0_50px_50px_0]"
+	<div class="mx-auto grid max-w-[1380px] gap-[39px] xl:grid-cols-[457px_1fr] xl:gap-[127px]">
+		<div
+			class="flex flex-col items-center gap-[17px] text-center xl:items-start xl:gap-[29px] xl:text-start"
+		>
+			<h2 class="text-charcoal-gray">Certificate y obtén tu registro como</h2>
+			<div class="w-fit">
+				<span class="text-[22px] font-bold text-sand xl:text-[32px]"> AGENTE INMOBILIARIO </span>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 447 12" fill="none">
+					<path
+						d="M10 5.01758L0 0.244075V11.7911L10 7.01758V5.01758ZM437.005 7.01758L447.005 11.7911V0.244075L437.005 5.01758V7.01758ZM9 7.01758H438.005V5.01758H9V7.01758Z"
+						fill="#F78D74"></path>
+				</svg>
+			</div>
+			<strong class="text-[24px] font-bold text-charcoal-gray md:text-[25px] lg:text-[30px]"
+				>ante el</strong
 			>
-				AGENTE INMOBILIARIO
-			</div>
-			<div class="mt-4 flex flex-wrap items-center gap-4 text-[18px] text-semi-dark-blue">
-				<p>ante el</p>
-				<OptimizeImage
-					stylesPicture="max-w-[300px]"
-					srcMobile="/home/mobile/logo-ministerio-mobile.webp"
-					srcTablet="/home/tablet/logo-ministerio-tablet.webp"
-					srcDesktop="/home/desktop/logo-ministerio-desktop.webp"
-					alt="Logo Ministerio"
-				/>
-			</div>
+			<picture class="max-w-[350px]">
+				<Image src={homeImages.ministerio} alt="Ministerio del perú" />
+			</picture>
 		</div>
-		<OptimizeImage
-			stylesPicture="max-w-[500px]"
-			srcMobile="/home/mobile/ejecutivo-mobile.webp"
-			srcTablet="/home/tablet/ejecutivo-tablet.webp"
-			srcDesktop="/home/desktop/ejecutivo-desktop.webp"
-			alt="Ejecutivo"
+
+		<Image
+			src={homeImages.certificate}
+			alt="Certificate y obtén tu registro como AGENTE INMOBILIARIO ante el"
+			class="object-contain"
 		/>
 	</div>
 </section>

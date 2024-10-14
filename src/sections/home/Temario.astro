@@ -1,9 +1,11 @@
 ---
 import { ChevronDownIcon } from '@/components/icons/ChevronDownIcon'
+import { Image } from 'astro:assets'
+import { homeImages } from '@/assets/home'
 
 const accordionData = [
 	{
-		title: 'MÓDULO 1. Estudios generales',
+		title: 'Estudios generales',
 		subSections: [
 			'Liderazgo y desarrollo organizacional',
 			'Ética en las actividades inmobiliarias',
@@ -13,7 +15,7 @@ const accordionData = [
 		]
 	},
 	{
-		title: 'MÓDULO 2. Aspectos legales aplicables a la gestión inmobiliaria',
+		title: 'Aspectos legales aplicables a la gestión inmobiliaria',
 		subSections: [
 			'Derecho Inmobiliario',
 			'Derecho Civil Patrimonial',
@@ -24,7 +26,7 @@ const accordionData = [
 		]
 	},
 	{
-		title: 'MÓDULO 3. Aspectos financieros, contables, tributarios, estadísticos y de avaluó',
+		title: 'Aspectos financieros, contables, tributarios, estadísticos y de avaluó',
 		subSections: [
 			'Aspectos Tributarios',
 			'Técnicas de tasación de inmuebles',
@@ -34,8 +36,7 @@ const accordionData = [
 		]
 	},
 	{
-		title:
-			'MÓDULO 4. Administración y marketing, comercialización, negociación y gestión comercial',
+		title: 'Administración y marketing, comercialización, negociación y gestión comercial',
 		subSections: [
 			'Marketing inmobiliario',
 			'Administración inmobiliaria',
@@ -46,7 +47,7 @@ const accordionData = [
 		]
 	},
 	{
-		title: 'MÓDULO 5. Urbanismo y arquitectura',
+		title: 'Urbanismo y arquitectura',
 		subSections: [
 			'Planificación y Desarrollo Urbano',
 			'Catastro urbano',
@@ -55,7 +56,7 @@ const accordionData = [
 		]
 	},
 	{
-		title: 'BENEFICIOS',
+		title: 'Beneficios',
 		subSections: [
 			'Taller integrador y taller de Marketing digital',
 			'Curso contratos inmobiliarios',
@@ -70,12 +71,9 @@ const accordionData = [
 		position: relative;
 		list-style: none; /* Elimina la flecha por defecto */
 		cursor: pointer; /* Hace que el cursor sea una mano al pasar sobre el summary */
-		padding-right: 20px; /* Asegura espacio para el icono */
 	}
 
 	details > summary .icono-summary {
-		position: absolute;
-		right: 0; /* Alinea el icono a la derecha */
 		transition: transform 0.2s; /* Animación para rotar el icono */
 	}
 
@@ -87,30 +85,44 @@ const accordionData = [
 		display: none; /* Específico para WebKit: oculta la flecha por defecto */
 	}
 </style>
-<section class="container relative py-[33px] lg:py-[66px]" id="malla-curricular">
-	<h2 class="text-center text-[18px] font-semibold text-semi-dark-blue sm:text-[25px]">TEMARIO</h2>
-	<div class="mx-auto mt-8 grid max-w-[850px] gap-[20px]">
-		{
-			accordionData.map((info, i) => {
-				return (
-					<div class="rounded-xl border-2 border-light-mustard px-8 py-4">
-						<details open={i === 0}>
-							<summary class="font-semibold text-semi-dark-blue">
-								{info.title}
-								<i class="icono-summary">
-									<ChevronDownIcon />
-								</i>
-							</summary>
-							<ul class="mt-4 flex list-decimal flex-col gap-2 pl-4 font-semibold text-semi-dark-blue">
-								{info.subSections.map((sub) => (
-									<li>{sub}</li>
-								))}
-							</ul>
-						</details>
-					</div>
-				)
-			})
-		}
+<section id="malla-curricular" class="container relative">
+	<h2 class="text-center text-charcoal-gray">Temario</h2>
+	<div
+		class="mx-auto grid max-w-[420px] items-end gap-[36px] lg:max-w-[912px] xl:max-w-[1437px] xl:grid-cols-[600px_1fr]"
+	>
+		<div class="mt-8 grid gap-[20px] xl:order-2">
+			{
+				accordionData.map((info, i) => {
+					return (
+						<div class="rounded-xl border-[1px] border-gray-200 px-8 py-4">
+							<details open={i === 0}>
+								<summary class="flex items-center justify-between gap-7 font-bold text-charcoal-gray">
+									<div class="flex flex-col">
+										<small class="text-sand">Módulo {i + 1}.</small>
+										{info.title}
+									</div>
+									<i class="icono-summary">
+										<div class="grid h-[32px] w-[32px] place-content-center rounded-[9px] bg-light-blue text-white">
+											<ChevronDownIcon />
+										</div>
+									</i>
+								</summary>
+								<ul class="mt-4 flex max-w-[691px] list-disc flex-col gap-2 pl-8 font-semibold">
+									{info.subSections.map((sub) => (
+										<li>{sub}</li>
+									))}
+								</ul>
+							</details>
+						</div>
+					)
+				})
+			}
+		</div>
+		<Image
+			src={homeImages.temario}
+			alt="Temario"
+			class="mx-auto max-w-[600px] object-contain xl:mx-0 xl:max-w-[initial]"
+		/>
 	</div>
 </section>
 <!-- top-[40%] translate-y-[-50%] -->

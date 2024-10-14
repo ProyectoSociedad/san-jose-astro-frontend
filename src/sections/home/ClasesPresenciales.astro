@@ -1,0 +1,92 @@
+---
+import { LocationIcon } from '@/components/icons/LocationIcon'
+import { PersonInfoIcon } from '@/components/icons/PersonInfoIcon'
+import { CalendarIcon } from '@/components/icons/CalendarIcon'
+import { ClockIcon } from '@/components/icons/ClockIcon'
+import { Image } from 'astro:assets'
+import { homeImages } from '@/assets/home'
+const schedules = [
+	{
+		shift: 'Turno Noche',
+		startDate: '24 de septiembre',
+		days: 'Lunes a viernes',
+		time: '6:00 P.M. a 10:00 P.M.',
+		duration: '2 meses y medio aprox.'
+	},
+	{
+		shift: 'Turno Mañana',
+		startDate: '02 de octubre',
+		days: 'Lunes, miércoles y viernes',
+		time: '9:00 A.M. a 1:00 P.M.',
+		duration: '4 meses aprox.'
+	}
+]
+---
+
+<section class="container" id="turno">
+	<h2 class="mb-[21px] text-center text-charcoal-gray xl:mb-[61px]">Clases presenciales</h2>
+	<div
+		class="mx-auto grid max-w-[420px] items-end gap-[84px] lg:max-w-[912px] lg:grid-cols-[1fr_442px] xl:max-w-[1437px]"
+	>
+		<div class="space-y-[28px] xl:space-y-[66px]">
+			<div class="space-y-[12px] xl:space-y-[21px]">
+				<h3 class="flex items-center gap-[10px] text-charcoal-gray">
+					<div
+						class="grid h-[36px] w-[36px] place-content-center rounded-[10px] bg-light-sky-blue text-light-blue"
+					>
+						<LocationIcon />
+					</div>Ubícanos en
+				</h3>
+				<p class="max-w-[687px]">
+					Av. Benavides 4828: oficina N° 502 Urbanización Las Gardenias - Santiago de Surco
+					provincia y departamento de Lima
+				</p>
+			</div>
+			<!-- Turnos -->
+			<div class="grid gap-[17px] xl:grid-cols-2 xl:gap-[33px]">
+				{
+					schedules.map((schedule) => (
+						<div class="space-y-[10px]">
+							<h3 class="flex items-center gap-[10px] text-charcoal-gray">
+								<div class="grid h-[36px] w-[36px] place-content-center rounded-[10px] bg-light-sky-blue text-light-blue">
+									<PersonInfoIcon />
+								</div>
+								{schedule.shift}
+							</h3>
+
+							<div class="flex flex-col gap-[20px] rounded-[12px] bg-light-blue px-[21px] py-[15px] text-white xl:px-[45px] xl:py-[32px]">
+								<span>
+									<strong>Inicio: </strong>
+									{schedule.startDate}
+								</span>
+								<ul class="space-y-[8px] font-semibold">
+									<li class="flex items-center gap-2">
+										<CalendarIcon className="text-[20px]" />
+										{schedule.days}
+									</li>
+									<li class="flex items-center gap-2">
+										<ClockIcon className="text-[20px]" /> {schedule.time}
+									</li>
+								</ul>
+								<svg
+									class="w-full"
+									width="1em"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 244 6"
+									fill="none"
+								>
+									<path
+										d="M5 2.5L0 0.113249L0 5.88675L5 3.5V2.5ZM239.002 3.5L244.002 5.88675V0.113249L239.002 2.5V3.5ZM4.5 3.5H239.502V2.5H4.5V3.5Z"
+										fill="#E8EFFF"
+									/>
+								</svg>
+								<strong>Duración: {schedule.duration}</strong>
+							</div>
+						</div>
+					))
+				}
+			</div>
+		</div>
+		<Image src={homeImages.clasesPresenciales} alt="Clases presenciales" class="object-contain" />
+	</div>
+</section>

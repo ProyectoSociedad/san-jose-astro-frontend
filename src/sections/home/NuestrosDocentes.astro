@@ -1,0 +1,49 @@
+---
+import { homeImages } from '@/assets/home'
+import { Image } from 'astro:assets'
+
+const profesores = [
+	{
+		title: 'Renzo Seminario',
+		description:
+			'Gerente de Banca de Negocios Regionales e Inmobiliarios - BCP Profesional en economía con más de 20 años de experiencia en Banca Empresarial, desarrollando principalmente análisis de modelos de negocios y riesgos empresariales',
+		image: homeImages.renzoSeminario
+	},
+	{
+		title: 'José Cieza',
+		description:
+			'Gerente de Banca de Negocios Regionales e Inmobiliarios - BCP Profesional en economía con más de 20 años de experiencia en Banca Empresarial, desarrollando principalmente análisis de modelos de negocios y riesgos empresariales',
+		image: homeImages.joseCieza
+	},
+	{
+		title: 'Luis Hutchinson',
+		description:
+			'Profesional en gestión y adm. de proyectos inmobiliarios. Magister en Gestión y Dirección de Empresas y Constructoras e Inmobiliarias (MDI) - PUCP y Universidad Politécnica de Madrid. Asesor y consultor de procesos municipales, licencias, etc.',
+		image: homeImages.luisHutchinson
+	}
+]
+---
+
+<section class="container" id="docentes">
+	<h2 class="text-center text-charcoal-gray">Nuestros Docentes</h2>
+	<div
+		class="mx-auto grid max-w-[1224px] gap-[14px] pt-[43px] md:grid-cols-2 lg:grid-cols-3 xl:gap-[30px]"
+	>
+		{
+			profesores.map((profesor) => (
+				<div
+					class:list={[
+						'flex flex-col gap-[10px] rounded-[8px] bg-white p-[22.77px] shadow-card-primary'
+					]}
+				>
+					<div class="grid h-[55px] w-[55px] place-content-center overflow-hidden rounded-[6px] bg-light-blue/40">
+						<Image src={profesor.image} alt={profesor.title} class="h-[55px] w-[55px]" />
+					</div>
+
+					<h3 class="text-light-blue">{profesor.title}</h3>
+					<p>{profesor.description}</p>
+				</div>
+			))
+		}
+	</div>
+</section>

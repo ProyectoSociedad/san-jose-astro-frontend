@@ -1,41 +1,68 @@
 ---
+import { homeImages } from '@/assets/home'
 import { SolicitarInformacion } from '@/components/forms/SolicitarInformacion'
-import { OptimizeImage } from '@/components/shared/OptimizeImage'
+import { CopyIcon } from '@/components/icons/CopyIcon'
+import { Image } from 'astro:assets'
 ---
 
 <section
-	class="bg-[url(/img/home/mobile/hero-mobile.webp)] bg-cover bg-center bg-no-repeat py-[45px] md:bg-[url(/img/home/tablet/hero-tablet.webp)] md:py-[85px] xl:bg-[url(/img/home/desktop/hero-desktop.webp)]"
+	id="inicio"
+	class="container grid gap-[20px] pt-[60px] lg:grid-cols-[1fr_600px] xl:grid-cols-[1fr_700px] xl:gap-[62px] 2xl:grid-cols-2 2xl:gap-[80px]"
 >
-	<div class="container grid items-center lg:grid-cols-2">
-		<div>
-			<strong class="mb-2 block w-fit rounded-full bg-lime-green px-3 py-1 text-semi-dark-blue">
-				CURSO
-			</strong>
-			<h1
-				class="flex flex-col gap-2 text-[35px] font-bold leading-[35px] text-semi-dark-blue md:text-[50px] md:leading-[50px] xl:text-[75px] xl:leading-[75px]"
-			>
-				<span class="w-fit rounded-lg bg-white px-2 py-1">AGENTE</span>
-				<span class="w-fit rounded-lg bg-white px-2 py-1">INMOBILIARIO</span>
-			</h1>
-			<div class="my-6 space-y-2 md:my-12 md:space-y-4">
-				<span class="rounded-lg bg-white px-2 py-1 font-semibold text-semi-dark-blue md:text-2xl"
-					>Convenio con:</span
+	<div>
+		<div class="w-fit space-y-[14px]">
+			<div class="flex items-center gap-2 lg:gap-[14px]">
+				<div
+					class="grid h-[30px] w-[30px] place-content-center rounded-[8px] bg-sand text-white lg:h-[45px] lg:w-[45px]"
 				>
-				<OptimizeImage
-					stylesPicture="max-w-[280px] md:max-w-[380px]"
-					srcMobile="/home/mobile/logo-ministerio-mobile.webp"
-					srcTablet="/home/tablet/logo-ministerio-tablet.webp"
-					srcDesktop="/home/desktop/logo-ministerio-desktop.webp"
-					alt="Logo Ministerio"
-				/>
+					<CopyIcon className="text-[18px] lg:text-[25px]" />
+				</div>
+				<span class="text-[22px] font-bold text-sand xl:text-[32px]"> CURSO</span>
+			</div>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 447 12" fill="none">
+				<path
+					d="M10 5.01758L0 0.244075V11.7911L10 7.01758V5.01758ZM437.005 7.01758L447.005 11.7911V0.244075L437.005 5.01758V7.01758ZM9 7.01758H438.005V5.01758H9V7.01758Z"
+					fill="#F78D74"></path>
+			</svg>
+		</div>
+		<h1 class="mb-[14px] mt-[25px] max-w-[429px] text-charcoal-gray xl:max-w-[458px]">
+			Agente Inmobiliario
+		</h1>
+		<!-- Convenio -->
+		<div
+			class="w-fit space-y-[10px] rounded-[12px] bg-white p-[18px] shadow-card-primary xl:p-[18px_24px_26px_30px]"
+		>
+			<strong class="text-sand xl:text-[18px]"> Convenio con:</strong>
+			<div class="flex gap-1">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="16"
+					height="45"
+					viewBox="0 0 16 45"
+					fill="none"
+				>
+					<path
+						d="M1 40V40.75H0.25V40H1ZM8.5 39.25L16 35.6699L16 44.3301L8.5 40.75V39.25ZM1.75 0L1.75 40H0.25L0.25 0L1.75 0ZM1 39.25H9.25V40.75H1V39.25Z"
+						fill="#F78D74"></path>
+				</svg>
+				<Image src={homeImages.ministerio} alt="Ministerio del perú" class="max-w-[224px]" />
 			</div>
 		</div>
-
+		<p class="mt-[49px] xl:text-[18px]">
+			Nuestro curso está dirigido a aquellos que buscan iniciar su carrera en el sector
+			inmobiliario, así como a profesionales que desean actualizar y perfeccionar sus competencias.
+		</p>
+	</div>
+	<div class="grid gap-[26px] lg:mb-[170px] lg:gap-0">
+		<Image
+			src={homeImages.hero}
+			alt="Hero"
+			class="object-contain lg:col-start-1 lg:row-start-1 2xl:object-cover"
+		/>
 		<div
-			class="relative mx-auto w-full max-w-[350px] overflow-hidden rounded-[30px] p-[21px] text-white md:max-w-[400px] md:p-[31px] xl:max-w-[480px]"
+			class="mx-auto w-full max-w-[450px] lg:z-10 lg:col-start-1 lg:row-start-1 lg:mx-0 lg:mt-auto lg:w-fit lg:translate-y-[170px] xl:w-full xl:max-w-[380px]"
 		>
-			<div class="absolute inset-0 bg-light-blue opacity-80"></div>
-			<SolicitarInformacion type="hero" client:visible />
+			<SolicitarInformacion type="hero" />
 		</div>
 	</div>
 </section>

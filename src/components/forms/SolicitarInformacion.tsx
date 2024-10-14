@@ -33,11 +33,11 @@ export const SolicitarInformacion = ({ type }: Props) => {
 		}
 	}
 	const gtagSendEvent = (callback: () => void) => {
-    window.gtag('event', 'conversion_event_submit_lead_form', {
-      'event_callback': callback,
-      'event_timeout': 2000
-    });
-  };
+		window.gtag('event', 'conversion_event_submit_lead_form', {
+			event_callback: callback,
+			event_timeout: 2000
+		})
+	}
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
@@ -46,7 +46,6 @@ export const SolicitarInformacion = ({ type }: Props) => {
 		// Cargar y ejecutar reCAPTCHA al enviar el formulario
 		const recaptchaToken = await loadAndExecuteRecaptcha('submit_form')
 		const redirectCallback = async () => {
-
 			try {
 				const response = await fetch(
 					'https://cursoagenteinmobiliarioperu.com/consultas/seguimiento.php',
@@ -67,11 +66,11 @@ export const SolicitarInformacion = ({ type }: Props) => {
 						})
 					}
 				)
-	
+
 				if (!response.ok) {
 					throw new Error('Network response was not ok')
 				}
-	
+
 				const result = await response.json()
 				console.log('Fetch success!')
 				console.log(result)
@@ -79,10 +78,10 @@ export const SolicitarInformacion = ({ type }: Props) => {
 				alert('Los datos se registraron correctamente.')
 				// Habilitar el botón y restaurar el texto
 				setLoading(false)
-	
+
 				// Mostrar el modal (este es un ejemplo de cómo podrías manejarlo)
 				// Asegúrate de tener implementado el modal en tu componente
-	
+
 				// Resetear el formulario
 				setFormData({
 					nombre: '',
@@ -96,24 +95,21 @@ export const SolicitarInformacion = ({ type }: Props) => {
 				console.error('Error al enviar los datos:', error)
 				setLoading(false)
 			}
-
 		}
-		gtagSendEvent(redirectCallback);
+		gtagSendEvent(redirectCallback)
 	}
 	return (
 		<>
 			{type === 'contacto' && (
-				<div className="mx-auto max-w-[358px] space-y-6 rounded-[53px] bg-white p-5 sm:max-w-[458px] sm:px-[40px] sm:py-[35px]">
-					<h2 className="text-center text-[20px] font-semibold text-semi-dark-blue">
-						SOLICITA INFORMACIÓN
-					</h2>
-					<form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+				<div className="rounded-[12px] bg-white p-[17px] shadow-card-primary md:px-[52px] xl:px-[30px] xl:py-[30px]">
+					<h3 className="text-charcoal-gray">Solicitar información</h3>
+					<form className="mt-[22px] grid grid-cols-12 gap-4 xl:mt-[27px]" onSubmit={handleSubmit}>
 						<input
 							type="text"
 							name="nombre"
 							placeholder="Nombre"
 							required
-							className="rounded-lg border-2 border-semi-dark-blue bg-transparent px-4 py-3 text-semi-dark-blue outline-none placeholder:text-semi-dark-blue"
+							className="col-span-full rounded-[12px] border border-sand bg-transparent px-4 py-3 text-light-gray outline-none placeholder:text-light-gray md:text-[14px] placeholder:md:text-[14px]"
 							value={formData.nombre}
 							onChange={handleChange}
 						/>
@@ -122,7 +118,7 @@ export const SolicitarInformacion = ({ type }: Props) => {
 							type="email"
 							name="correo"
 							placeholder="Correo"
-							className="rounded-lg border-2 border-semi-dark-blue bg-transparent px-4 py-3 text-semi-dark-blue outline-none placeholder:text-semi-dark-blue"
+							className="col-span-full rounded-[12px] border border-sand bg-transparent px-4 py-3 text-light-gray outline-none placeholder:text-light-gray md:col-span-6 md:text-[14px] placeholder:md:text-[14px]"
 							value={formData.correo}
 							onChange={handleChange}
 						/>
@@ -130,7 +126,7 @@ export const SolicitarInformacion = ({ type }: Props) => {
 							type="number"
 							name="celular"
 							placeholder="Celular"
-							className="rounded-lg border-2 border-semi-dark-blue bg-transparent px-4 py-3 text-semi-dark-blue outline-none placeholder:text-semi-dark-blue"
+							className="col-span-full rounded-[12px] border border-sand bg-transparent px-4 py-3 text-light-gray outline-none placeholder:text-light-gray md:col-span-6 md:text-[14px] placeholder:md:text-[14px]"
 							required
 							value={formData.celular}
 							onChange={handleChange}
@@ -139,7 +135,7 @@ export const SolicitarInformacion = ({ type }: Props) => {
 							name="departamento"
 							value={formData.departamento}
 							onChange={handleChange}
-							className="block rounded-lg border-2 border-semi-dark-blue bg-transparent px-4 py-3 text-semi-dark-blue outline-none placeholder:text-semi-dark-blue"
+							className="col-span-full rounded-[12px] border border-sand bg-transparent px-4 py-3 text-light-gray outline-none placeholder:text-light-gray md:col-span-6 md:text-[14px] placeholder:md:text-[14px]"
 							required
 						>
 							<option value="" disabled>
@@ -156,7 +152,7 @@ export const SolicitarInformacion = ({ type }: Props) => {
 							))}
 						</select>
 						<select
-							className="rounded-lg border-2 border-semi-dark-blue bg-transparent px-4 py-3 text-semi-dark-blue outline-none placeholder:text-white"
+							className="col-span-full rounded-[12px] border border-sand bg-transparent px-4 py-3 text-light-gray outline-none placeholder:text-light-gray md:col-span-6 md:text-[14px] placeholder:md:text-[14px]"
 							required
 							name="turno"
 							value={formData.turno}
@@ -171,37 +167,39 @@ export const SolicitarInformacion = ({ type }: Props) => {
 								</option>
 							))}
 						</select>
-						<div className="flex items-center gap-4">
+						<div className="col-span-full flex items-center gap-2">
 							<input
 								type="checkbox"
-								id="terms-contacto"
+								id="terms"
 								required
-								className="h-4 w-4"
+								className="h-4 w-4 xl:h-[18px] xl:w-[18px]"
 								name="terms"
 								checked={formData.terms}
 								onChange={handleChange}
 							/>
-							<label htmlFor="terms-contacto">Acepto los términos y condiciones</label>
+							<label htmlFor="terms" className="text-[14px]">
+								Acepto los términos y condiciones
+							</label>
 						</div>
 						<button
 							type="submit"
-							className="mx-auto w-fit rounded-lg bg-light-mustard px-4 py-3.5 font-semibold text-semi-dark-blue"
+							className="col-span-full mx-auto mt-2 w-fit rounded-lg bg-light-blue px-[24px] py-[10px] text-[14px] font-semibold text-white transition-colors hover:bg-sand"
 							disabled={loading}
 						>
-							{loading ? 'Cargando...' : 'Solicitar'}
+							{loading ? 'Cargando...' : '¡Enviar ahora!'}
 						</button>
 					</form>
 				</div>
 			)}
 			{type === 'hero' && (
-				<div className="relative z-10 space-y-6">
-					<h2 className="text-center text-[20px] font-semibold">SOLICITAR INFORMACIÓN</h2>
-					<form action="" className="flex flex-col gap-4" onSubmit={handleSubmit}>
+				<div className="bg-blue-sky space-y-6 rounded-[12px] p-[17px] text-white xl:px-[30px] xl:py-[30px]">
+					<h3 className="text-center">Solicitar información</h3>
+					<form className="flex flex-col gap-2.5" onSubmit={handleSubmit}>
 						<input
 							type="text"
 							placeholder="Nombre"
 							required
-							className="rounded-lg border-2 border-white bg-transparent px-4 py-3 text-white outline-none placeholder:text-white"
+							className="rounded-lg border border-white bg-transparent px-4 py-3 text-[14px] text-white outline-none placeholder:text-[14px] placeholder:text-white"
 							name="nombre"
 							value={formData.nombre}
 							onChange={handleChange}
@@ -210,7 +208,7 @@ export const SolicitarInformacion = ({ type }: Props) => {
 							required
 							type="email"
 							placeholder="Correo"
-							className="rounded-lg border-2 border-white bg-transparent px-4 py-3 text-white outline-none placeholder:text-white"
+							className="rounded-lg border border-white bg-transparent px-4 py-3 text-[14px] text-white outline-none placeholder:text-[14px] placeholder:text-white"
 							name="correo"
 							value={formData.correo}
 							onChange={handleChange}
@@ -218,14 +216,14 @@ export const SolicitarInformacion = ({ type }: Props) => {
 						<input
 							type="number"
 							placeholder="Celular"
-							className="rounded-lg border-2 border-white bg-transparent px-4 py-3 text-white outline-none placeholder:text-white"
+							className="rounded-lg border border-white bg-transparent px-4 py-3 text-[14px] text-white outline-none placeholder:text-[14px] placeholder:text-white"
 							required
 							name="celular"
 							value={formData.celular}
 							onChange={handleChange}
 						/>
 						<select
-							className="rounded-lg border-2 border-white bg-transparent px-4 py-3 text-white outline-none placeholder:text-white"
+							className="rounded-lg border border-white bg-transparent px-4 py-3 text-[14px] text-white outline-none placeholder:text-[14px] placeholder:text-white"
 							required
 							name="departamento"
 							value={formData.departamento}
@@ -245,7 +243,7 @@ export const SolicitarInformacion = ({ type }: Props) => {
 							))}
 						</select>
 						<select
-							className="rounded-lg border-2 border-white bg-transparent px-4 py-3 text-white outline-none placeholder:text-white"
+							className="rounded-lg border border-white bg-transparent px-4 py-3 text-[14px] text-white outline-none placeholder:text-[14px] placeholder:text-white"
 							required
 							name="turno"
 							value={formData.turno}
@@ -261,24 +259,26 @@ export const SolicitarInformacion = ({ type }: Props) => {
 							))}
 						</select>
 						{/* <!-- Checkbox para términos y condiciones --> */}
-						<div className="flex items-center gap-4">
+						<div className="flex items-center gap-2">
 							<input
 								type="checkbox"
 								id="terms"
 								required
-								className="h-4 w-4"
+								className="h-4 w-4 xl:h-[18px] xl:w-[18px]"
 								name="terms"
 								checked={formData.terms}
 								onChange={handleChange}
 							/>
-							<label htmlFor="terms">Acepto los términos y condiciones</label>
+							<label htmlFor="terms" className="text-[14px]">
+								Acepto los términos y condiciones
+							</label>
 						</div>
 						<button
 							type="submit"
-							className="mx-auto w-fit rounded-lg bg-light-mustard px-4 py-3 font-semibold text-semi-dark-blue"
+							className="mx-auto mt-2 w-fit rounded-lg bg-white px-[24px] py-[10px] text-[14px] font-semibold text-light-blue transition-colors hover:bg-sand hover:text-white"
 							disabled={loading}
 						>
-							{loading ? 'Cargando...' : 'Empieza ahora'}
+							{loading ? 'Cargando...' : '¡Enviar ahora!'}
 						</button>
 					</form>
 				</div>

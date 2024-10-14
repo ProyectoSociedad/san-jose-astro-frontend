@@ -1,20 +1,23 @@
 ---
+import { homeImages } from '@/assets/home'
 import { SolicitarInformacion } from '@/components/forms/SolicitarInformacion'
-import { OptimizeImage } from '@/components/shared/OptimizeImage'
+import { Image } from 'astro:assets'
 ---
 
-<section
-	class="relative z-10 bg-light-blue py-[45px] md:py-[85px] lg:py-[103px] xl:py-[183px]"
-	id="contacto"
->
-	<div class="container">
-		<SolicitarInformacion type="contacto" client:visible />
+<section class="container px-0 lg:px-4" id="contacto">
+	<div class="grid">
+		<Image
+			src={homeImages.contacto}
+			alt="Contacto"
+			class="col-start-1 row-start-1 h-[245px] lg:h-[345px] lg:rounded-[16px] xl:h-[370px]"
+		/>
+		<!-- ml-[121px] -->
+		<div class="col-start-1 row-start-1 mx-4">
+			<div
+				class="mx-auto mt-[185px] max-w-[332px] md:max-w-[586px] lg:ml-[10px] lg:mr-auto xl:ml-[117px] xl:mt-[85px]"
+			>
+				<SolicitarInformacion type="contacto" client:visible />
+			</div>
+		</div>
 	</div>
-	<OptimizeImage
-		stylesPicture="absolute bottom-0 z-[-1]"
-		srcMobile="/home/mobile/fondo-edificios-mobile.webp"
-		srcTablet="/home/tablet/fondo-edificios-tablet.webp"
-		srcDesktop="/home/desktop/fondo-edificios-desktop.webp"
-		alt="Edificios"
-	/>
 </section>

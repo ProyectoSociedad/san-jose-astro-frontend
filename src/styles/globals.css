@@ -5,7 +5,7 @@
 @layer base {
 	:root {
 		/* Typografias */
-		--font-work-sans: 'Work Sans Variable', sans-serif;
+		--font-dm-sans: 'DM Sans Variable', sans-serif;
 		/* --font-red-hat: "Red Hat Display Variable", sans-serif; */
 	}
 }
@@ -17,7 +17,7 @@
 		@apply sm:[scroll-padding-top:85.36px] lg:[scroll-padding-top:110px];
 	}
 	body {
-		@apply font-work-sans text-[14px] md:text-[16px];
+		@apply font-dm-sans text-[14px] text-dark-gray md:text-[16px];
 	}
 	img {
 		@apply h-full w-full object-cover;
@@ -25,16 +25,38 @@
 	.container {
 		@apply px-4 md:px-8 lg:px-12 xl:px-16;
 	}
+	h1 {
+		@apply text-[32px] font-bold md:text-[45px] md:leading-[54px] xl:text-[70px] xl:leading-[75px] 2xl:text-[90px] 2xl:leading-[95px];
+	}
+	h2 {
+		@apply text-[24px] font-bold md:text-[25px] lg:text-[30px];
+	}
+	h3 {
+		@apply text-[16px] font-bold md:text-[20px];
+	}
 }
-
+@layer components {
+	.no-scrollbar {
+		scrollbar-width: none;
+	}
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+	/* Hide scrollbar for IE, Edge and Firefox */
+	.no-scrollbar {
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none !important; /* Firefox */
+	}
+}
 /* Typografias */
 
+/* dm-sans-latin-wght-normal */
 @font-face {
-	font-family: 'Work Sans Variable';
+	font-family: 'DM Sans Variable';
 	font-style: normal;
 	font-display: swap;
-	font-weight: 100 900;
-	src: url(@fontsource-variable/work-sans/files/work-sans-latin-wght-normal.woff2)
+	font-weight: 100 1000;
+	src: url(@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2)
 		format('woff2-variations');
 	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
 		U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF,
