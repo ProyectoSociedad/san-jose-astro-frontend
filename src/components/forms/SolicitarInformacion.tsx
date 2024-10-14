@@ -32,12 +32,6 @@ export const SolicitarInformacion = ({ type }: Props) => {
 			}))
 		}
 	}
-	const gtagSendEvent = (callback: () => void) => {
-		window.gtag('event', 'conversion_event_submit_lead_form', {
-			event_callback: callback,
-			event_timeout: 2000
-		})
-	}
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
@@ -45,58 +39,52 @@ export const SolicitarInformacion = ({ type }: Props) => {
 		setLoading(true)
 		// Cargar y ejecutar reCAPTCHA al enviar el formulario
 		const recaptchaToken = await loadAndExecuteRecaptcha('submit_form')
-		const redirectCallback = async () => {
-			try {
-				const response = await fetch(
-					'https://cursoagenteinmobiliarioperu.com/consultas/seguimiento.php',
-					{
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json'
-						},
-						body: JSON.stringify({
-							nomb_persona: formData.nombre,
-							email_persona: formData.correo,
-							cel_persona: formData.celular,
-							depa: formData.departamento,
-							prov: '',
-							dis: '',
-							turno: formData.turno,
-							'g-recaptcha-response': recaptchaToken
-						})
-					}
-				)
 
-				if (!response.ok) {
-					throw new Error('Network response was not ok')
+		try {
+			const response = await fetch(
+				'https://cursoagenteinmobiliarioperu.com/consultas/seguimiento.php',
+				{
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						nomb_persona: formData.nombre,
+						email_persona: formData.correo,
+						cel_persona: formData.celular,
+						depa: formData.departamento,
+						prov: '',
+						dis: '',
+						turno: formData.turno,
+						'g-recaptcha-response': recaptchaToken
+					})
 				}
+			)
 
-				const result = await response.json()
-				console.log('Fetch success!')
-				console.log(result)
-				// Mostrar una alerta de éxito
-				alert('Los datos se registraron correctamente.')
-				// Habilitar el botón y restaurar el texto
-				setLoading(false)
+			const result = await response.json()
+			console.log('Fetch success!')
+			console.log(result)
+			// Mostrar una alerta de éxito
+			alert('Los datos se registraron correctamente.')
+			// Habilitar el botón y restaurar el texto
+			setLoading(false)
 
-				// Mostrar el modal (este es un ejemplo de cómo podrías manejarlo)
-				// Asegúrate de tener implementado el modal en tu componente
+			// Mostrar el modal (este es un ejemplo de cómo podrías manejarlo)
+			// Asegúrate de tener implementado el modal en tu componente
 
-				// Resetear el formulario
-				setFormData({
-					nombre: '',
-					correo: '',
-					celular: '',
-					departamento: '',
-					turno: '',
-					terms: false
-				})
-			} catch (error) {
-				console.error('Error al enviar los datos:', error)
-				setLoading(false)
-			}
+			// Resetear el formulario
+			setFormData({
+				nombre: '',
+				correo: '',
+				celular: '',
+				departamento: '',
+				turno: '',
+				terms: false
+			})
+		} catch (error) {
+			console.error('Error al enviar los datos:', error)
+			setLoading(false)
 		}
-		gtagSendEvent(redirectCallback)
 	}
 	return (
 		<>
@@ -192,7 +180,7 @@ export const SolicitarInformacion = ({ type }: Props) => {
 				</div>
 			)}
 			{type === 'hero' && (
-				<div className="bg-blue-sky space-y-6 rounded-[12px] p-[17px] text-white xl:px-[30px] xl:py-[30px]">
+				<div className="space-y-6 rounded-[12px] bg-blue-sky p-[17px] text-white xl:px-[30px] xl:py-[30px]">
 					<h3 className="text-center">Solicitar información</h3>
 					<form className="flex flex-col gap-2.5" onSubmit={handleSubmit}>
 						<input
@@ -262,14 +250,14 @@ export const SolicitarInformacion = ({ type }: Props) => {
 						<div className="flex items-center gap-2">
 							<input
 								type="checkbox"
-								id="terms"
+								id="terms-contacto"
 								required
 								className="h-4 w-4 xl:h-[18px] xl:w-[18px]"
 								name="terms"
 								checked={formData.terms}
 								onChange={handleChange}
 							/>
-							<label htmlFor="terms" className="text-[14px]">
+							<label htmlFor="terms-contacto" className="text-[14px]">
 								Acepto los términos y condiciones
 							</label>
 						</div>
