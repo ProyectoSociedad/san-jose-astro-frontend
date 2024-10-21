@@ -24,14 +24,18 @@ const beneficios = [
 ---
 
 <section class="container">
-	<h2 class="text-charcoal-gray text-center">Beneficios adicionales</h2>
+	<h2 class="text-center text-charcoal-gray" data-aos="fade-left">Beneficios adicionales</h2>
 	<ul
 		class="mx-auto mt-[24px] grid max-w-[1280px] gap-[12px] sm:grid-cols-2 sm:gap-[24px] md:grid-cols-3 lg:grid-cols-4 xl:mt-[75px] xl:gap-[67px]"
 	>
 		{
-			beneficios.map((beneficio) => (
-				<li class="flex items-center gap-[12px] md:flex-col md:items-start xl:gap-[20px]">
-					<div class="bg-light-sky-blue grid h-[46px] w-[46px] flex-none place-content-center rounded-[10px] text-light-blue">
+			beneficios.map((beneficio, i) => (
+				<li
+					class="flex items-center gap-[12px] md:flex-col md:items-start xl:gap-[20px]"
+					data-aos="fade-up-left"
+					data-aos-delay={i * 250}
+				>
+					<div class="grid h-[46px] w-[46px] flex-none place-content-center rounded-[10px] bg-light-sky-blue text-light-blue">
 						<beneficio.icon className="text-[20px]" />
 					</div>
 					<h3 class="text-charcoal-gray">{beneficio.title}</h3>

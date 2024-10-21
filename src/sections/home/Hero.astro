@@ -10,7 +10,7 @@ import { Image } from 'astro:assets'
 	class="container grid gap-[20px] pt-[60px] lg:grid-cols-[1fr_600px] xl:grid-cols-[1fr_700px] xl:gap-[62px] 2xl:grid-cols-2 2xl:gap-[80px]"
 >
 	<div>
-		<div class="w-fit space-y-[14px]">
+		<div data-aos="fade-right" class="w-fit space-y-[14px]">
 			<div class="flex items-center gap-2 lg:gap-[14px]">
 				<div
 					class="grid h-[30px] w-[30px] place-content-center rounded-[8px] bg-sand text-white lg:h-[45px] lg:w-[45px]"
@@ -25,11 +25,17 @@ import { Image } from 'astro:assets'
 					fill="#F78D74"></path>
 			</svg>
 		</div>
-		<h1 class="mb-[14px] mt-[25px] max-w-[429px] text-charcoal-gray xl:max-w-[458px]">
+		<h1
+			data-aos="fade-up"
+			data-aos-delay="250"
+			class="mb-[14px] mt-[25px] max-w-[429px] text-charcoal-gray xl:max-w-[458px]"
+		>
 			Agente Inmobiliario
 		</h1>
 		<!-- Convenio -->
 		<div
+			data-aos="fade-left"
+			data-aos-delay="500"
 			class="w-fit space-y-[10px] rounded-[12px] bg-white p-[18px] shadow-card-primary xl:p-[18px_24px_26px_30px]"
 		>
 			<strong class="text-sand xl:text-[18px]"> Convenio con:</strong>
@@ -48,7 +54,7 @@ import { Image } from 'astro:assets'
 				<Image src={homeImages.ministerio} alt="Ministerio del perú" class="max-w-[224px]" />
 			</div>
 		</div>
-		<p class="mt-[49px] xl:text-[18px]">
+		<p data-aos="fade-down" data-aos-delay="750" class="mt-[49px] xl:text-[18px]">
 			Nuestro curso está dirigido a aquellos que buscan iniciar su carrera en el sector
 			inmobiliario, así como a profesionales que desean actualizar y perfeccionar sus competencias.
 		</p>
@@ -57,12 +63,16 @@ import { Image } from 'astro:assets'
 		<Image
 			src={homeImages.hero}
 			alt="Hero"
+			data-aos="fade-left"
+			data-aos-delay="1000"
 			class="object-contain lg:col-start-1 lg:row-start-1 2xl:object-cover"
 		/>
 		<div
 			class="mx-auto w-full max-w-[450px] lg:z-10 lg:col-start-1 lg:row-start-1 lg:mx-0 lg:mt-auto lg:w-fit lg:translate-y-[170px] xl:w-full xl:max-w-[380px]"
 		>
-			<SolicitarInformacion type="hero" client:visible />
+			<div data-aos="fade-up" data-aos-delay="1250">
+				<SolicitarInformacion type="hero" client:visible />
+			</div>
 		</div>
 	</div>
 </section>

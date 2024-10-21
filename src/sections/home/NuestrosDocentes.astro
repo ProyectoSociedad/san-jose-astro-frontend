@@ -25,13 +25,15 @@ const profesores = [
 ---
 
 <section class="container" id="docentes">
-	<h2 class="text-center text-charcoal-gray">Nuestros Docentes</h2>
+	<h2 class="text-center text-charcoal-gray" data-aos="fade-right">Nuestros Docentes</h2>
 	<div
 		class="mx-auto grid max-w-[1224px] gap-[14px] pt-[43px] md:grid-cols-2 lg:grid-cols-3 xl:gap-[30px]"
 	>
 		{
-			profesores.map((profesor) => (
+			profesores.map((profesor, i) => (
 				<div
+					data-aos="fade-up-right"
+					data-aos-delay={i * 250}
 					class:list={[
 						'flex flex-col gap-[10px] rounded-[8px] bg-white p-[22.77px] shadow-card-primary'
 					]}

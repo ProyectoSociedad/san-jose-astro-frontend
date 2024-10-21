@@ -29,7 +29,7 @@ import { WhatsappIcon } from '@/components/icons/WhatsappIcon'
 			content="San José del Sur ofrece un Curso de Especialización de Agente Inmobiliario en colaboración con el Ministerio de Vivienda. Prepárate para sobresalir en el sector inmobiliario y construcción con nuestra formación especializada."
 		/>
 		<!-- Google Tag Manager -->
-		<script is:inline>
+		<script is:inline async>
 			;(function (w, d, s, l, i) {
 				w[l] = w[l] || []
 				w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' })
@@ -42,8 +42,9 @@ import { WhatsappIcon } from '@/components/icons/WhatsappIcon'
 			})(window, document, 'script', 'dataLayer', 'GTM-P6M48Z38')
 		</script>
 		<!-- TikTok Pixel Code Start -->
-		<script is:inline>
+		<script is:inline async>
 			!(function (w, d, t) {
+				d
 				w.TiktokAnalyticsObject = t
 				var ttq = (w[t] = w[t] || [])
 				;(ttq.methods = [
@@ -78,6 +79,7 @@ import { WhatsappIcon } from '@/components/icons/WhatsappIcon'
 					(ttq.load = function (e, n) {
 						var r = 'https://analytics.tiktok.com/i18n/pixel/events.js',
 							o = n && n.partner
+						o
 						;(ttq._i = ttq._i || {}),
 							(ttq._i[e] = []),
 							(ttq._i[e]._u = r),
@@ -150,7 +152,7 @@ import { WhatsappIcon } from '@/components/icons/WhatsappIcon'
 			<WhatsappIcon className="h-8 w-8" />
 		</a>
 		<Header client:load />
-		<main class="flex flex-col gap-[40px] lg:gap-[75px] xl:gap-[130px]">
+		<main class="flex flex-col gap-[40px] overflow-hidden lg:gap-[75px] xl:gap-[130px]">
 			<Hero />
 			<ConoceMas />
 			<Beneficios />
@@ -162,5 +164,10 @@ import { WhatsappIcon } from '@/components/icons/WhatsappIcon'
 			<Contacto />
 		</main>
 		<Footer />
+		<script>
+			import AOS from 'aos'
+			import 'aos/dist/aos.css'
+			AOS.init()
+		</script>
 	</body>
 </html>

@@ -57,13 +57,17 @@ const beneficios = [
 ---
 
 <section class="container">
-	<h2 class="text-center text-charcoal-gray">Beneficios de estudiar con <br /> nosotros</h2>
+	<h2 class="text-center text-charcoal-gray" data-aos="fade-right">
+		Beneficios de estudiar con <br /> nosotros
+	</h2>
 	<div
 		class="no-scrollbar mx-auto grid max-w-[1224px] cursor-grab grid-cols-[repeat(7,320px)] gap-[14px] overflow-x-auto pb-[77px] pt-[43px] md:grid-cols-2 lg:grid-cols-3 xl:gap-[30px]"
 	>
 		{
 			beneficios.map((beneficio, i) => (
 				<div
+					data-aos="zoom-in"
+					data-aos-delay={i * 100}
 					class:list={[
 						'flex flex-col gap-[10px] rounded-[8px] bg-white p-[22.77px] shadow-card-primary',
 						`${i + 1 === 7 && 'xl:col-[2/3]'}`
@@ -94,6 +98,6 @@ const beneficios = [
 				</p>
 			</div>
 		</div>
-		<Image src={homeImages.diploma} alt="Diplima" />
+		<Image src={homeImages.diploma} alt="Diplima" data-aos="flip-left" />
 	</div>
 </section>

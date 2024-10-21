@@ -24,12 +24,14 @@ const schedules = [
 ---
 
 <section class="container" id="turno">
-	<h2 class="mb-[21px] text-center text-charcoal-gray xl:mb-[61px]">Clases presenciales</h2>
+	<h2 class="mb-[21px] text-center text-charcoal-gray xl:mb-[61px]" data-aos="fade-left">
+		Clases presenciales
+	</h2>
 	<div
 		class="mx-auto grid max-w-[420px] items-end gap-[84px] lg:max-w-[912px] lg:grid-cols-[1fr_442px] xl:max-w-[1437px]"
 	>
 		<div class="space-y-[28px] xl:space-y-[66px]">
-			<div class="space-y-[12px] xl:space-y-[21px]">
+			<div class="space-y-[12px] xl:space-y-[21px]" data-aos="fade-up">
 				<h3 class="flex items-center gap-[10px] text-charcoal-gray">
 					<div
 						class="grid h-[36px] w-[36px] place-content-center rounded-[10px] bg-light-sky-blue text-light-blue"
@@ -45,8 +47,8 @@ const schedules = [
 			<!-- Turnos -->
 			<div class="grid gap-[17px] xl:grid-cols-2 xl:gap-[33px]">
 				{
-					schedules.map((schedule) => (
-						<div class="space-y-[10px]">
+					schedules.map((schedule, i) => (
+						<div class="space-y-[10px]" data-aos="flip-up" data-aos-delay={i * 200}>
 							<h3 class="flex items-center gap-[10px] text-charcoal-gray">
 								<div class="grid h-[36px] w-[36px] place-content-center rounded-[10px] bg-light-sky-blue text-light-blue">
 									<PersonInfoIcon />
@@ -87,6 +89,11 @@ const schedules = [
 				}
 			</div>
 		</div>
-		<Image src={homeImages.clasesPresenciales} alt="Clases presenciales" class="object-contain" />
+		<Image
+			src={homeImages.clasesPresenciales}
+			alt="Clases presenciales"
+			class="object-contain"
+			data-aos="fade-left"
+		/>
 	</div>
 </section>
