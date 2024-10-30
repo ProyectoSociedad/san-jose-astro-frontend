@@ -26,7 +26,7 @@
 		@apply px-4 md:px-8 lg:px-12 xl:px-16;
 	}
 	h1 {
-		@apply text-[32px] font-bold md:text-[45px] md:leading-[54px] xl:text-[70px] xl:leading-[75px] 2xl:text-[90px] 2xl:leading-[95px];
+		@apply text-[32px] font-bold md:text-[45px] md:leading-[54px] xl:text-[70px] xl:leading-[75px];
 	}
 	h2 {
 		@apply text-[24px] font-bold md:text-[25px] lg:text-[30px];

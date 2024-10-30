@@ -6,19 +6,27 @@ import { ClipboardListIcon } from '@/components/icons/ClipboardListIcon'
 const beneficios = [
 	{
 		icon: MarketingIcon,
-		title: 'Taller integrador y taller de Marketing digital'
+		title: 'Taller Marketing Digital Inmobiliario',
+		description:
+			'Aprende estrategias de Marketing Digital para captar clientes y promocionar propiedades con herramientas innovadoras.'
 	},
 	{
 		icon: BuildingGridIcon,
-		title: 'Curso contratos inmobiliarios'
+		title: 'Cursos Virtuales Inmobiliarios',
+		description:
+			'Tendrás acceso a los cursos Captación de Inmuebles y Clientes, y Negociación Inmobiliaria.'
 	},
 	{
 		icon: CopyIcon,
-		title: '15 Modelos de contratos inmobiliarios'
+		title: '20 Modelos de Contratos Inmobiliarios',
+		description:
+			'Accede a una colección exclusiva de contratos inmobiliarios personalizables para cada transacción.'
 	},
 	{
 		icon: ClipboardListIcon,
-		title: 'Manual del agente inmobiliario'
+		title: 'Manuales para el Agente Inmobiliario',
+		description:
+			'Una guía detallada sobre las normativas legales, inteligencia artificial y tributación que todo agente inmobiliario debe conocer..'
 	}
 ]
 ---
@@ -31,7 +39,7 @@ const beneficios = [
 		{
 			beneficios.map((beneficio, i) => (
 				<li
-					class="flex items-center gap-[12px] md:flex-col md:items-start xl:gap-[20px]"
+					class="flex items-center gap-[12px] rounded-[10px] border border-charcoal-gray px-4 py-4 md:flex-col md:items-start xl:gap-[20px]"
 					data-aos="fade-up-left"
 					data-aos-delay={i * 250}
 				>
@@ -39,6 +47,7 @@ const beneficios = [
 						<beneficio.icon className="text-[20px]" />
 					</div>
 					<h3 class="text-charcoal-gray">{beneficio.title}</h3>
+					<p>{beneficio.description}</p>
 				</li>
 			))
 		}

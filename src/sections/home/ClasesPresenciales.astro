@@ -5,17 +5,18 @@ import { CalendarIcon } from '@/components/icons/CalendarIcon'
 import { ClockIcon } from '@/components/icons/ClockIcon'
 import { Image } from 'astro:assets'
 import { homeImages } from '@/assets/home'
+import LiteYouTube from '@/components/shared/LiteYouTube.astro'
 const schedules = [
 	{
 		shift: 'Turno Noche',
-		startDate: '24 de septiembre',
+		startDate: '30 de octubre',
 		days: 'Lunes a viernes',
 		time: '6:00 P.M. a 10:00 P.M.',
 		duration: '2 meses y medio aprox.'
 	},
 	{
 		shift: 'Turno Mañana',
-		startDate: '02 de octubre',
+		startDate: '20 de noviembre',
 		days: 'Lunes, miércoles y viernes',
 		time: '9:00 A.M. a 1:00 P.M.',
 		duration: '4 meses aprox.'
@@ -90,10 +91,45 @@ const schedules = [
 			</div>
 		</div>
 		<Image
-			src={homeImages.clasesPresenciales}
+			src={homeImages.clasesPresenciales1}
 			alt="Clases presenciales"
 			class="object-contain"
 			data-aos="fade-left"
 		/>
+		<div class="col-span-full grid gap-6 lg:grid-cols-3">
+			<Image
+				src={homeImages.clasesPresenciales2}
+				alt="Clases presenciales"
+				class="object-contain"
+				data-aos="flip-up"
+			/>
+			<Image
+				src={homeImages.clasesPresenciales3}
+				alt="Clases presenciales"
+				class="object-contain"
+				data-aos="flip-up"
+				data-aos-delay="200"
+			/>
+			<Image
+				src={homeImages.clasesPresenciales4}
+				alt="Clases presenciales"
+				class="object-contain"
+				data-aos="flip-up"
+				data-aos-delay="400"
+			/>
+		</div>
+		<div class="col-span-full grid items-center gap-10 lg:grid-cols-[100px_1fr_100px]">
+			<div class="hidden h-[2px] bg-sand lg:block"></div>
+
+			<div class="mx-auto w-full lg:max-w-[1000px]">
+				<LiteYouTube
+					videoId="mNMYqZ2WfYM"
+					backgroundImage="https://noeliareginelli.com/wp-content/uploads/2017/11/medidas-de-portada-de-youtube-2019.png"
+					title="Reproducir presentación de clases presenciales"
+				/>
+			</div>
+
+			<div class="hidden h-[2px] bg-sand lg:block"></div>
+		</div>
 	</div>
 </section>

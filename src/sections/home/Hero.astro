@@ -10,6 +10,9 @@ import { Image } from 'astro:assets'
 	class="container grid gap-[20px] pt-[60px] lg:grid-cols-[1fr_600px] xl:grid-cols-[1fr_700px] xl:gap-[62px] 2xl:grid-cols-2 2xl:gap-[80px]"
 >
 	<div>
+		<picture class="block w-full max-w-[400px]">
+			<img src="/img/promocion.svg" class="mb-10 h-auto object-contain" alt="Promoción" />
+		</picture>
 		<div data-aos="fade-right" class="w-fit space-y-[14px]">
 			<div class="flex items-center gap-2 lg:gap-[14px]">
 				<div
@@ -33,31 +36,61 @@ import { Image } from 'astro:assets'
 			Agente Inmobiliario
 		</h1>
 		<!-- Convenio -->
-		<div
-			data-aos="fade-left"
-			data-aos-delay="500"
-			class="w-fit space-y-[10px] rounded-[12px] bg-white p-[18px] shadow-card-primary xl:p-[18px_24px_26px_30px]"
-		>
-			<strong class="text-sand xl:text-[18px]"> Convenio con:</strong>
-			<div class="flex gap-1">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="16"
-					height="45"
-					viewBox="0 0 16 45"
-					fill="none"
-				>
-					<path
-						d="M1 40V40.75H0.25V40H1ZM8.5 39.25L16 35.6699L16 44.3301L8.5 40.75V39.25ZM1.75 0L1.75 40H0.25L0.25 0L1.75 0ZM1 39.25H9.25V40.75H1V39.25Z"
-						fill="#F78D74"></path>
-				</svg>
-				<Image src={homeImages.ministerio} alt="Ministerio del perú" class="max-w-[224px]" />
+		<div class="flex flex-col gap-2 2xl:flex-row">
+			<div
+				data-aos="fade-left"
+				data-aos-delay="500"
+				class="w-fit space-y-[10px] rounded-[12px] bg-white p-[18px] shadow-card-primary xl:p-[18px_24px_26px_30px]"
+			>
+				<strong class="text-sand xl:text-[18px]"> Convenio con:</strong>
+				<div class="flex gap-1">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="16"
+						height="45"
+						viewBox="0 0 16 45"
+						fill="none"
+					>
+						<path
+							d="M1 40V40.75H0.25V40H1ZM8.5 39.25L16 35.6699L16 44.3301L8.5 40.75V39.25ZM1.75 0L1.75 40H0.25L0.25 0L1.75 0ZM1 39.25H9.25V40.75H1V39.25Z"
+							fill="#F78D74"></path>
+					</svg>
+					<Image src={homeImages.ministerio} alt="Ministerio del perú" class="max-w-[224px]" />
+				</div>
+			</div>
+			<div
+				data-aos="fade-left"
+				data-aos-delay="500"
+				class="w-fit space-y-[10px] rounded-[12px] bg-white p-[18px] shadow-card-primary xl:p-[18px_24px_26px_30px]"
+			>
+				<strong class="text-sand xl:text-[18px]"> Instituto licenciado por::</strong>
+				<div class="flex gap-1">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="16"
+						height="45"
+						viewBox="0 0 16 45"
+						fill="none"
+					>
+						<path
+							d="M1 40V40.75H0.25V40H1ZM8.5 39.25L16 35.6699L16 44.3301L8.5 40.75V39.25ZM1.75 0L1.75 40H0.25L0.25 0L1.75 0ZM1 39.25H9.25V40.75H1V39.25Z"
+							fill="#F78D74"></path>
+					</svg>
+					<Image src={homeImages.minedu} alt="Ministerio del perú" class="max-w-[224px]" />
+				</div>
 			</div>
 		</div>
 		<p data-aos="fade-down" data-aos-delay="750" class="mt-[49px] xl:text-[18px]">
 			Nuestro curso está dirigido a aquellos que buscan iniciar su carrera en el sector
 			inmobiliario, así como a profesionales que desean actualizar y perfeccionar sus competencias.
 		</p>
+		<a
+			href="https://api.whatsapp.com/send?phone=51908885851&text=Hola%2C%20qu%C3%A9%20tal%3F%20Quiero%20informaci%C3%B3n%20del%20curso%20Agente%20Inmobiliaria.%20Web"
+			target="_blank"
+			rel="noopener noreferrer"
+			class="mt-8 flex w-fit items-center justify-center rounded-[0_20px_0_20px] border-[1px] border-transparent bg-sand px-[25px] py-[11px] font-semibold text-white transition-colors hover:bg-sand/80 disabled:disabled:cursor-not-allowed disabled:opacity-50 xl:px-[29px] xl:py-[12px]"
+			>Obtén más información</a
+		>
 	</div>
 	<div class="grid gap-[26px] lg:mb-[170px] lg:gap-0">
 		<Image
