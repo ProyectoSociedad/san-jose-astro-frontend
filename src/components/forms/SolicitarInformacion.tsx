@@ -1,5 +1,8 @@
 import useRecaptcha from '@/hooks/useRecaptcha'
-import { departamentos, turnos } from '@/selects/data'
+import {
+	// departamentos,
+	turnos
+} from '@/selects/data'
 import { useState } from 'react'
 
 interface Props {
@@ -10,7 +13,7 @@ export const SolicitarInformacion = ({ type }: Props) => {
 		nombre: '',
 		correo: '',
 		celular: '',
-		departamento: '', // Asegúrate de que esta es la forma deseada de iniciar este campo
+		// departamento: '', // Asegúrate de que esta es la forma deseada de iniciar este campo
 		turno: '',
 		terms: false
 	})
@@ -52,7 +55,7 @@ export const SolicitarInformacion = ({ type }: Props) => {
 						nomb_persona: formData.nombre,
 						email_persona: formData.correo,
 						cel_persona: formData.celular,
-						depa: formData.departamento,
+						depa: '15',
 						prov: '',
 						dis: '',
 						turno: formData.turno,
@@ -77,7 +80,7 @@ export const SolicitarInformacion = ({ type }: Props) => {
 				nombre: '',
 				correo: '',
 				celular: '',
-				departamento: '',
+				// departamento: '',
 				turno: '',
 				terms: false
 			})
@@ -119,7 +122,7 @@ export const SolicitarInformacion = ({ type }: Props) => {
 							value={formData.celular}
 							onChange={handleChange}
 						/>
-						<select
+						{/* <select
 							name="departamento"
 							value={formData.departamento}
 							onChange={handleChange}
@@ -138,7 +141,7 @@ export const SolicitarInformacion = ({ type }: Props) => {
 									{departamento.nombre}
 								</option>
 							))}
-						</select>
+						</select> */}
 						<select
 							className="col-span-full rounded-[12px] border border-sand bg-transparent px-4 py-3 text-light-gray outline-none placeholder:text-light-gray md:col-span-6 md:text-[14px] placeholder:md:text-[14px]"
 							required
@@ -210,7 +213,7 @@ export const SolicitarInformacion = ({ type }: Props) => {
 							value={formData.celular}
 							onChange={handleChange}
 						/>
-						<select
+						{/* <select
 							className="rounded-lg border border-white bg-transparent px-4 py-3 text-[14px] text-white outline-none placeholder:text-[14px] placeholder:text-white"
 							required
 							name="departamento"
@@ -229,7 +232,7 @@ export const SolicitarInformacion = ({ type }: Props) => {
 									{departamento.nombre}
 								</option>
 							))}
-						</select>
+						</select> */}
 						<select
 							className="rounded-lg border border-white bg-transparent px-4 py-3 text-[14px] text-white outline-none placeholder:text-[14px] placeholder:text-white"
 							required
