@@ -1,0 +1,41 @@
+---
+import Header from '@/components/shared/Header.astro'
+import Footer from '@/components/shared/Footer.astro'
+import '@/styles/globals.css'
+import ChatsWhatsapp from '@/components/shared/ChatsWhatsapp.astro'
+import type { Preload } from '@/types/Preload'
+import SEO from '@/components/shared/SEO.astro'
+
+interface Props {
+	title: string
+	description: string
+	preload?: Array<Preload>
+	canonical?: string
+	image?: string
+}
+const { title, description, preload, canonical, image } = Astro.props
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<SEO
+			canonical={canonical}
+			description={description}
+			image={image}
+			preload={preload}
+			title={title}
+		/>
+	</head>
+	<body>
+		<ChatsWhatsapp />
+		<Header />
+		<slot />
+		<Footer />
+		<script>
+			import AOS from 'aos'
+			import 'aos/dist/aos.css'
+			AOS.init()
+		</script>
+	</body>
+</html>

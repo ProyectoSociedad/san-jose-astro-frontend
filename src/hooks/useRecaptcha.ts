@@ -33,7 +33,7 @@
 
 // export default useRecaptcha
 import { useState, useCallback } from 'react'
-
+import { PUBLIC_RECAPTCHA_SITE_KEY } from 'astro:env/client'
 // Definir el tipo de la función que será devuelta por el gancho
 type UseRecaptchaReturnType = {
 	loadAndExecuteRecaptcha: (actionName: string) => Promise<string>
@@ -47,8 +47,7 @@ const useRecaptcha = (): UseRecaptchaReturnType => {
 		const addScript = () => {
 			return new Promise<void>((resolve, reject) => {
 				const script = document.createElement('script')
-				script.src =
-					'https://www.google.com/recaptcha/api.js?render=6LchufsnAAAAAKgEzDQWSH1nLyG_1ttI-7tDNvl8'
+				script.src = `https://www.google.com/recaptcha/api.js?render=${PUBLIC_RECAPTCHA_SITE_KEY}`
 				script.async = true
 				document.head.appendChild(script)
 				script.onload = () => {
@@ -68,7 +67,7 @@ const useRecaptcha = (): UseRecaptchaReturnType => {
 		await new Promise<void>((resolve) => window.grecaptcha.ready(resolve))
 
 		try {
-			const newToken = await window.grecaptcha.execute('6LchufsnAAAAAKgEzDQWSH1nLyG_1ttI-7tDNvl8', {
+			const newToken = await window.grecaptcha.execute(PUBLIC_RECAPTCHA_SITE_KEY, {
 				action: actionName
 			})
 			setToken(newToken)

@@ -4,6 +4,7 @@ import {
 	turnos
 } from '@/selects/data'
 import { useState } from 'react'
+import { API_INFORMATION } from 'astro:env/client'
 
 interface Props {
 	type: 'hero' | 'contacto'
@@ -44,25 +45,22 @@ export const SolicitarInformacion = ({ type }: Props) => {
 		const recaptchaToken = await loadAndExecuteRecaptcha('submit_form')
 
 		try {
-			const response = await fetch(
-				'https://cursoagenteinmobiliarioperu.com/consultas/seguimiento.php',
-				{
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify({
-						nomb_persona: formData.nombre,
-						email_persona: formData.correo,
-						cel_persona: formData.celular,
-						depa: '15',
-						prov: '',
-						dis: '',
-						turno: formData.turno,
-						'g-recaptcha-response': recaptchaToken
-					})
-				}
-			)
+			const response = await fetch(API_INFORMATION, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					nomb_persona: formData.nombre,
+					email_persona: formData.correo,
+					cel_persona: formData.celular,
+					depa: '15',
+					prov: '',
+					dis: '',
+					turno: formData.turno,
+					'g-recaptcha-response': recaptchaToken
+				})
+			})
 
 			const result = await response.json()
 			console.log('Fetch success!')

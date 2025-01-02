@@ -56,12 +56,13 @@ const accordionData = [
 		]
 	},
 	{
-		title: 'Beneficios',
+		title: 'Ventajas Adicionales',
 		subSections: [
 			'Taller integrador y taller de Marketing digital',
-			'Curso contratos inmobiliarios',
-			'15 Modelos de contratos inmobiliarios',
-			'Manual del agente inmobiliario'
+			'Workshops Inmobiliarios',
+			'20 modelos de contratos inmobiliarios',
+			'Manual del agente inmobiliario',
+			'Cursos virtuales: Captación de Inmuebles y Clientes, y Negociación Inmobiliaria.'
 		]
 	}
 ]
@@ -87,7 +88,7 @@ const accordionData = [
 	}
 </style>
 <section id="malla-curricular" class="container relative">
-	<h2 class="text-center text-charcoal-gray" data-aos="fade-right">Temario</h2>
+	<h2 class="text-center text-charcoal-gray" data-aos="fade-right">Malla curricular</h2>
 	<div
 		class="mx-auto grid max-w-[420px] items-end gap-[36px] lg:max-w-[912px] xl:max-w-[1437px] xl:grid-cols-[600px_1fr]"
 	>
@@ -99,7 +100,9 @@ const accordionData = [
 							<details open={i === 0}>
 								<summary class="flex items-center justify-between gap-7 font-bold text-charcoal-gray">
 									<div class="flex flex-col">
-										<small class="text-sand">Módulo {i + 1}.</small>
+										{i !== accordionData.length - 1 && (
+											<small class="text-sand">Módulo {i + 1}.</small>
+										)}
 										{info.title}
 									</div>
 									<i class="icono-summary">

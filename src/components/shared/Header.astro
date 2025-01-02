@@ -1,0 +1,179 @@
+---
+import { LogoSanJoseIcon } from '@/components/icons/LogoSanJoseIcon'
+import { BarsIcon } from '@/components/icons/BarsIcon'
+import { CloseIcon } from '@/components/icons/CloseIcon'
+import { buttonVariants } from './Button.astro'
+
+const menuItems = [
+	{
+		text: 'Inicio',
+		href: '#inicio',
+		path: 'inicio'
+	},
+	{
+		text: 'Malla curricular',
+		href: '#malla-curricular',
+		path: 'malla-curricular'
+	},
+	{
+		text: 'Turno',
+		href: '#turno',
+		path: 'turno'
+	},
+	{
+		text: 'Docentes',
+		href: '#docentes',
+		path: 'docentes'
+	}
+]
+---
+
+<header
+	class="sticky top-0 z-40 bg-white py-[14px] shadow-[0px_12px_48px_0px_rgba(0,37,86,0.15)] lg:py-5"
+>
+	<nav
+		class="mx-auto flex w-full max-w-[1360px] items-center justify-between px-[20px] md:px-[32px] lg:px-[48px] xl:px-0"
+	>
+		<a href="#" class="text-sand-700 text-xl font-bold">
+			<LogoSanJoseIcon className="text-[153px] text-light-blue" />
+		</a>
+		<input type="checkbox" id="menu-toggle" />
+
+		<label
+			for="menu-toggle"
+			class="menu-icon grid h-[40px] w-[40px] cursor-pointer place-content-center rounded-[8px] border border-sand lg:hidden"
+		>
+			<!-- Icono de menú (hamburguesa) -->
+			<i class="icon-menu">
+				<BarsIcon className="text-[24px] text-sand" />
+			</i>
+
+			<!-- Icono de cerrar (aparece cuando está activo) -->
+			<i class="icon-close">
+				<CloseIcon className="text-[24px] text-sand" />
+			</i>
+		</label>
+
+		<ul
+			class="nav-list text-basic-gray hidden items-center gap-[32px] font-semibold text-light-blue lg:flex"
+		>
+			{
+				menuItems.map((item) => (
+					<li>
+						<a href={item.href} class:list={['transition-colors hover:text-sand']}>
+							{item.text}
+						</a>
+					</li>
+				))
+			}
+
+			<li class="flex items-center gap-[8px]">
+				<a href="#contacto" class={buttonVariants({ variant: 'default' })}> Contacto </a>
+			</li>
+		</ul>
+		<!-- Mobile menu -->
+		<div
+			class="menu fixed left-0 right-0 top-[68px] flex min-h-[calc(100dvh-68px)] flex-col bg-white px-[20px] py-[36px] lg:hidden"
+		>
+			<ul class="nav-list text-basic-gray-900 space-y-[24px] text-center text-[18px] font-semibold">
+				{
+					menuItems.map((item) => (
+						<li>
+							<a href={item.href} class:list={['transition-colors hover:text-sand']}>
+								{item.text}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+			<div class="mt-auto">
+				<ul>
+					<li class="container flex flex-col gap-[8px]">
+						<a id="contacto-close" href="#contacto" class={buttonVariants({ variant: 'default' })}>
+							Contacto
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>
+<style>
+	/* Ocultar el checkbox */
+	#menu-toggle {
+		display: none;
+	}
+
+	/* Icono de menú (hamburguesa) */
+	.menu-icon .icon-menu {
+		display: inline;
+	}
+
+	/* Icono de cerrar (oculto por defecto) */
+	.menu-icon .icon-close {
+		display: none;
+	}
+	/* Cuando el menú está activo, cambia el icono de hamburguesa por el icono de cerrar */
+	#menu-toggle:checked + .menu-icon .icon-menu {
+		display: none;
+	}
+
+	#menu-toggle:checked + .menu-icon .icon-close {
+		display: inline;
+	}
+
+	.menu {
+		transform: translateX(100%);
+		transition: transform 0.3s ease;
+	}
+	/* Mostrar el menú cuando el checkbox está marcado */
+	#menu-toggle:checked ~ .menu {
+		transform: translateX(0);
+		border-top: 1px solid #e6eefa;
+	}
+</style>
+<script>
+	const sections: NodeListOf<HTMLElement> = document.querySelectorAll('section')
+	const navLinks: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('.nav-list a')
+	const menuToggle: HTMLInputElement | null = document.querySelector('#menu-toggle') // Referencia al checkbox
+	const contacto: HTMLAnchorElement | null = document.querySelector('#contacto-close') // Referencia al enlace de comprar entrada
+	let currentNavigation: string = ''
+
+	const handleScroll = () => {
+		sections.forEach((section) => {
+			const rect = section.getBoundingClientRect()
+
+			// Condición para las secciones visibles
+			if (rect.top <= 150 && rect.bottom >= 150) {
+				const sectionId = section.id
+
+				if (currentNavigation !== sectionId) {
+					currentNavigation = sectionId
+					// Actualizar las clases de los enlaces de navegación
+					navLinks.forEach((link) => {
+						if (link.getAttribute('href') === `#${sectionId}`) {
+							link.classList.add('text-sand')
+						} else {
+							link.classList.remove('text-sand')
+						}
+					})
+				}
+				return // Salir del bucle si se encuentra la sección actual
+			}
+		})
+	}
+	const handleMenuClose = () => {
+		if (menuToggle) {
+			menuToggle.checked = false // Desmarcar el checkbox para cerrar el menú
+		}
+	}
+	// Agregar evento de scroll
+	document.addEventListener('scroll', handleScroll)
+	// Agregar evento de clic a los enlaces del menú móvil
+	navLinks.forEach((link) => {
+		link.addEventListener('click', () => {
+			handleMenuClose()
+		})
+	})
+	contacto?.addEventListener('click', handleMenuClose)
+</script>

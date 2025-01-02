@@ -1,0 +1,112 @@
+---
+import { Image } from 'astro:assets'
+import { homeImages } from '@/assets/home'
+const customers = [
+	{
+		src: homeImages['prestopolis'],
+		alt: 'Prestópolis'
+	},
+	{
+		src: homeImages['alquilat'],
+		alt: 'Alquilat'
+	}
+]
+
+// Duplicar objetos hasta alcanzar al menos 8 elementos si son menos
+let extendedCustomers = [...customers]
+while (extendedCustomers.length < 8) {
+	extendedCustomers = extendedCustomers.concat(customers)
+}
+---
+
+<section class="container">
+	<div class="pt-8 md:pt-12 xl:pt-[120px]">
+		<h2 class="text-center text-charcoal-gray" data-aos="fade-left">Convenios con</h2>
+
+		<div class="logos pb-12 pt-5 md:pb-[68px] md:pt-9 lg:pb-[72px] xl:pb-[100px]">
+			<div class="logos-slide">
+				{
+					extendedCustomers.map((customer) => {
+						return (
+							<div class="mx-1.5 inline-block rounded-[8px] bg-white p-4 shadow-[0px_12px_48px_0px_rgba(0,37,86,0.15)] md:mx-3 md:rounded-[12px] md:p-6">
+								<Image src={customer.src} alt={customer.alt} width={150} height={72} />
+							</div>
+						)
+					})
+				}
+			</div>
+			<div class="logos-slide">
+				{
+					extendedCustomers.map((customer) => {
+						return (
+							<div class="mx-1.5 inline-block rounded-[8px] bg-white p-4 shadow-[0px_12px_48px_0px_rgba(0,37,86,0.15)] md:mx-3 md:rounded-[12px] md:p-6">
+								<Image src={customer.src} alt={customer.alt} width={150} height={72} />
+							</div>
+						)
+					})
+				}
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	@keyframes slide {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(-100%);
+		}
+	}
+
+	.logos {
+		overflow: hidden;
+		background: white;
+		white-space: nowrap;
+		position: relative;
+	}
+
+	.logos:before,
+	.logos:after {
+		position: absolute;
+		top: 0;
+		width: 52px;
+		height: 100%;
+		content: '';
+		z-index: 2;
+	}
+	@media (min-width: 768px) {
+		.logos:before,
+		.logos:after {
+			width: 160px;
+		}
+	}
+
+	.logos:before {
+		left: 0;
+		background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+	}
+
+	.logos:after {
+		right: 0;
+		background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+	}
+
+	.logos:hover .logos-slide {
+		animation-play-state: paused;
+	}
+
+	.logos-slide {
+		display: inline-block;
+		animation: 35s slide infinite linear;
+	}
+
+	.logos-slide img {
+		display: inline-block;
+		width: 150px;
+		height: 72px;
+		max-width: initial;
+		object-fit: contain;
+	}
+</style>

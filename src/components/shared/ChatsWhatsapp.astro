@@ -1,0 +1,350 @@
+---
+import { homeImages } from '@/assets/home'
+import { CloseIcon } from '@/components/icons/CloseIcon'
+import { WhatsappIcon } from '@/components/icons/WhatsappIcon'
+import { Image } from 'astro:assets'
+
+const chatsWhatsapp = [
+	{
+		id: 1,
+		name: 'Samantha',
+		role: 'Asesora Comercial',
+		image: homeImages['samantha'],
+		whatsappLink:
+			'https://api.whatsapp.com/send?phone=51908885858&text=Hola,%20quiero%20informacion%20del%20Curso%20Agente%20Inmobiliario.%20Web'
+	},
+	{
+		id: 2,
+		name: 'Zoila',
+		role: 'Asesora Comercial',
+		image: homeImages['zoila'],
+		whatsappLink:
+			'https://api.whatsapp.com/send?phone=51908885821&text=Hola,%20quiero%20informacion%20del%20Curso%20Agente%20Inmobiliario.%20Web'
+	},
+	{
+		id: 3,
+		name: 'Andrea',
+		role: 'Asesora Comercial',
+		image: homeImages['alejandra'],
+		whatsappLink:
+			'https://api.whatsapp.com/send?phone=51908885838&text=Hola,%20quiero%20informacion%20del%20Curso%20Agente%20Inmobiliario.%20Web'
+	},
+	{
+		id: 4,
+		name: 'Judith',
+		role: 'Asesora Comercial',
+		image: homeImages['judith'],
+		whatsappLink:
+			'https://api.whatsapp.com/send?phone=51908885851&text=Hola,%20quiero%20informacion%20del%20Curso%20Agente%20Inmobiliario.%20Web'
+	}
+]
+---
+
+<div class="wa__btn_popup">
+	<div class="pulse"></div>
+	<div class="pulse small"></div>
+	<span class="md:hidden">Solicitar información</span>
+	<div class="wa__btn_popup_icon">
+		<i class="wa__btn_popup_icon_whatsapp">
+			<WhatsappIcon />
+		</i>
+		<i class="wa__btn_popup_icon_close">
+			<CloseIcon />
+		</i>
+	</div>
+</div>
+
+<div class="wa__popup_chat_box">
+	<div class="wa__popup_heading">
+		<div class="wa__popup_title">Iniciar una conversación</div>
+		<div class="wa__popup_intro">
+			Haz clic en uno de nuestros miembros para chatear por <strong>WhatsApp ;)</strong>
+		</div>
+	</div>
+	<div class="wa__popup_content wa__popup_content_left">
+		<div class="wa__popup_notice">El equipo suele responder en pocos minutos.</div>
+		<div class="wa__popup_content_list">
+			{
+				chatsWhatsapp.map((chat) => (
+					<div class="wa__popup_content_item">
+						<a
+							target="_blank"
+							rel="noopener noreferrer"
+							href={chat.whatsappLink}
+							class="wa__stt wa__stt_online"
+						>
+							<Image
+								src={chat.image}
+								alt={chat.name}
+								width={48}
+								height={48}
+								class="wa__popup_avatar"
+							/>
+							<div>
+								<div class="wa__member_name">{chat.name}</div>
+								<div class="wa__member_duty">{chat.role}</div>
+							</div>
+							<WhatsappIcon className="ml-auto flex-none text-[20px] text-whatsapp" />
+						</a>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</div>
+<style>
+	@media (min-width: 768px) {
+		.pulse {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 56px;
+			height: 56px;
+			background-color: rgba(37, 211, 102, 0.3); /* WhatsApp green with transparency */
+			border-radius: 50%;
+			animation: pulse 2s infinite ease-in-out;
+		}
+
+		.pulse.small {
+			width: 66px; /* Slightly larger than the button */
+			height: 66px;
+			animation: pulse-small 2s infinite ease-in-out;
+		}
+
+		@keyframes pulse {
+			0% {
+				transform: translate(-50%, -50%) scale(1);
+				opacity: 1;
+			}
+			100% {
+				transform: translate(-50%, -50%) scale(1.3);
+				opacity: 0;
+			}
+		}
+
+		@keyframes pulse-small {
+			0% {
+				transform: translate(-50%, -50%) scale(1.1);
+				opacity: 1;
+			}
+			100% {
+				transform: translate(-50%, -50%) scale(1.4);
+				opacity: 0;
+			}
+		}
+	}
+	.wa__btn_popup {
+		/* position: fixed;
+		right: 30px;
+		bottom: 30px;
+		cursor: pointer;
+		z-index: 999; */
+		@apply fixed bottom-0 z-20 flex w-full cursor-pointer items-center justify-center gap-2 rounded-[12px_12px_0_0] bg-whatsapp px-5 py-3 text-[16px] font-semibold text-white shadow-[0px_-5px_20px_0px_rgba(37,211,102,0.25)] transition-colors hover:bg-whatsapp-hover md:bottom-[30px] md:right-[30px] md:grid md:h-[56px] md:w-[56px] md:place-content-center md:rounded-full;
+	}
+	.wa__btn_popup .wa__btn_popup_icon {
+		position: relative;
+		width: 24px;
+		height: 24px;
+	}
+	.wa__btn_popup .wa__btn_popup_icon_whatsapp,
+	.wa__btn_popup_icon_close {
+		@apply absolute inset-0 z-10 block text-[23.333px];
+		transition:
+			0.4s ease transform,
+			0.4s ease opacity;
+	}
+	.wa__btn_popup .wa__btn_popup_icon_close {
+		opacity: 0;
+		transform: scale(0) rotate(-360deg);
+	}
+	.wa__btn_popup.wa__active .wa__btn_popup_icon_whatsapp {
+		opacity: 0;
+		transform: scale(0) rotate(360deg);
+	}
+	.wa__btn_popup.wa__active .wa__btn_popup_icon_close {
+		opacity: 1;
+		transform: scale(1) rotate(0deg);
+	}
+
+	.wa__popup_chat_box {
+		width: 351px;
+		border-radius: 5px 5px 8px 8px;
+		position: fixed;
+		overflow: hidden;
+		box-shadow: 0px 10px 10px 4px rgba(0, 0, 0, 0.04);
+		z-index: 998;
+		opacity: 0;
+		visibility: hidden;
+		transition:
+			opacity 0.4s ease,
+			visibility 0.4s ease,
+			transform 0.4s ease,
+			box-shadow 0.4s ease;
+		max-width: calc(100% - 50px);
+		transform: translate(0, 50px);
+		@apply bottom-[60px] left-0 right-0 mx-auto md:bottom-[102px] md:left-[initial] md:right-[25px] md:mx-0;
+	}
+
+	.wa__popup_chat_box:hover,
+	.wa__popup_chat_box:focus,
+	.wa__popup_chat_box:active {
+		box-shadow: 0px 10px 10px 4px rgba(32, 32, 37, 0.23);
+	}
+
+	.wa__popup_chat_box.wa__active {
+		transform: translate(0, 0);
+		visibility: visible;
+		opacity: 1;
+	}
+
+	.wa__popup_chat_box .wa__popup_heading {
+		position: relative;
+		padding: 15px 43px 17px 74px;
+		color: #fff;
+		background: theme('colors.whatsapp');
+	}
+
+	.wa__popup_chat_box .wa__popup_title {
+		padding-top: 2px;
+		color: #fff;
+		font-size: 18px;
+		line-height: 24px;
+	}
+
+	.wa__popup_chat_box .wa__popup_intro {
+		padding-top: 4px;
+		font-size: 12px;
+		line-height: 20px;
+	}
+
+	.wa__popup_chat_box .wa__popup_content {
+		background: #ffffff;
+		padding: 13px 20px 21px 19px;
+		text-align: center;
+	}
+
+	.wa__popup_chat_box .wa__popup_content.wa__popup_content_left {
+		text-align: left;
+	}
+
+	.wa__popup_chat_box .wa__popup_notice {
+		font-size: 11px;
+		color: #a5abb7;
+		font-weight: 500;
+		padding: 0 3px;
+	}
+
+	.wa__popup_chat_box .wa__popup_content_item {
+		margin: 14px 0 0;
+		transform: translate(0, 20px);
+		opacity: 0;
+		transition:
+			opacity 0.4s ease,
+			transform 0.4s ease; /* Transición genérica */
+	}
+	.wa__popup_chat_box.wa__lauch .wa__popup_content_item {
+		opacity: 1;
+		transform: translate(0, 0);
+	}
+	.wa__popup_chat_box .wa__member_name {
+		font-size: 14px;
+		color: #363c47;
+		line-height: 1.188em;
+	}
+
+	.wa__popup_chat_box .wa__member_duty {
+		font-size: 11px;
+		color: #989b9f;
+		padding: 2px 0 0;
+		line-height: 1.125em;
+	}
+
+	.wa__popup_chat_box .wa__stt {
+		display: flex;
+		width: 100%;
+		align-items: center;
+		gap: 10px;
+		text-decoration: none;
+		position: relative;
+		border-left: 2px solid theme('colors.whatsapp');
+		background: #f5f7f9;
+		border-radius: 2px 4px 2px 4px;
+		padding: 13px 14px 12px 15px;
+	}
+	.wa__popup_chat_box .wa__popup_avatar {
+		aspect-ratio: 1/1;
+		height: 48px;
+		width: 48px;
+		border-radius: 50%;
+		flex: none;
+	}
+	.wa__popup_chat_box .wa__stt.wa__stt_online {
+		cursor: pointer;
+		transition:
+			0.2s ease background,
+			0.2s ease box-shadow;
+	}
+
+	.wa__popup_chat_box .wa__stt.wa__stt_online:hover {
+		background: #ffffff;
+		box-shadow: 0px 7px 15px 1px rgba(55, 62, 70, 0.07);
+	}
+</style>
+
+<script>
+	let waTimeOut: number = 0 // Inicializado con 0
+	let waTimeIn: number = 0 // Inicializado con 0
+
+	const waBtnPopup = document.querySelector<HTMLDivElement>('.wa__btn_popup')
+	const waPopupChatBox = document.querySelector<HTMLDivElement>('.wa__popup_chat_box')
+	const waPopupContentItems = document.querySelectorAll<HTMLDivElement>('.wa__popup_content_item')
+
+	if (waBtnPopup && waPopupChatBox && waPopupContentItems) {
+		// Asignar retrasos dinámicos a cada elemento
+		const setDynamicDelays = () => {
+			waPopupContentItems.forEach((item, index) => {
+				const delay = 0.3 + index * 0.2 // Calcula el retraso dinámico
+				item.style.transitionDelay = `${delay}s` // Aplica el retraso
+			})
+		}
+
+		// Restablecer estilos y clases para sincronización
+		const resetPopupAnimations = () => {
+			waPopupContentItems.forEach((item) => {
+				item.style.transitionDelay = '0s' // Quitar el retraso para evitar problemas
+			})
+			waPopupChatBox.classList.remove('wa__pending', 'wa__lauch') // Asegurarse de que las clases estén limpias
+		}
+
+		// Asignar retrasos iniciales
+		setDynamicDelays()
+
+		// Escuchar el final de la transición
+		waPopupChatBox.addEventListener('transitionend', () => {
+			if (!waPopupChatBox.classList.contains('wa__active')) {
+				resetPopupAnimations() // Restablecer cuando la transición termina
+			}
+		})
+
+		// Toggle el modal
+		waBtnPopup.addEventListener('click', () => {
+			if (waPopupChatBox.classList.contains('wa__active')) {
+				waPopupChatBox.classList.remove('wa__active')
+				waBtnPopup.classList.remove('wa__active')
+				clearTimeout(waTimeIn)
+			} else {
+				waPopupChatBox.classList.add('wa__pending', 'wa__active')
+				waBtnPopup.classList.add('wa__active')
+				clearTimeout(waTimeOut)
+
+				if (!waPopupChatBox.classList.contains('wa__lauch')) {
+					waTimeIn = window.setTimeout(() => {
+						waPopupChatBox.classList.add('wa__lauch')
+						setDynamicDelays() // Reaplicar retrasos dinámicos
+					}, 100)
+				}
+			}
+		})
+	}
+</script>

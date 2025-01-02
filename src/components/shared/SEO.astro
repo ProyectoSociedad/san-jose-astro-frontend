@@ -1,0 +1,70 @@
+---
+import type { Preload } from '@/types/Preload'
+import og from '@/assets/og.webp'
+import favicon from '@/assets/favicon.png'
+import appleTouchIcon from '@/assets/icons/apple-touch-icon.png'
+
+interface Props {
+	title: string
+	description: string
+	preload?: Array<Preload>
+	canonical?: string
+	image?: string
+}
+
+const { title, description, preload, canonical, image = og.src } = Astro.props as Props
+
+const determineCanonicalURL = () => {
+	if (Astro.url.host.includes('localhost')) return 'http://localhost:4321'
+
+	return canonical || Astro.url.pathname
+}
+//La clases new URL() recibe dos parametros, el primero es la URL que se va a construir y el segundo es la URL base, si se establece un url absoluta en el primer parametro tomará siempre la URL absoluta no importa si se establece un segundo parametro
+const canonicalURL = new URL(determineCanonicalURL(), Astro.site)
+---
+
+<title>{title}</title>
+
+<meta charset="UTF-8" />
+
+<meta name="description" content={description} />
+
+{
+	preload?.map(({ href, as, type, rel = 'preload', crossorigin }) => (
+		<link {rel} {href} {as} {type} {crossorigin} />
+	))
+}
+
+<link rel="canonical" href={canonicalURL} />
+
+<meta name="viewport" content="width=device-width" />
+<meta name="theme-color" content="#0380FF" />
+
+<meta
+	name="keywords"
+	content="curso de agente inmobiliario, formación en bienes raíces, capacitación inmobiliaria, escuela de agentes inmobiliarios, aprender bienes raíces, curso de corretaje de propiedades, certificación en bienes raíces, clases para agentes inmobiliarios, curso de agente inmobiliario en San José del Sur, escuela inmobiliaria en San José, formación en bienes raíces en San José del Sur, certificación de bienes raíces en San José, curso rápido de agente inmobiliario, cómo iniciar en bienes raíces, curso de bienes raíces flexible, capacitación para nuevos agentes inmobiliarios, programa para agentes inmobiliarios, curso intensivo de corretaje de propiedades, San José del Sur bienes raíces, curso profesional de bienes raíces en San José del Sur"
+/>
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={new URL(image, Astro.url)} />
+
+<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={Astro.url} />
+<meta
+	property="og:site_name"
+	content="San José del Sur - Curso de Especialización de Agente Inmobiliario"
+/>
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="es_PE" />
+
+<meta name="robots" content="index, follow" />
+<meta name="googlebot" content="index, follow" />
+
+<link rel="icon" type="image/svg+xml" href={favicon.src} />
+<link rel="apple-touch-icon" href={appleTouchIcon.src} />
+
+<link rel="icon" type="image/svg+xml" href={favicon.src} />

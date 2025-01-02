@@ -1,0 +1,28 @@
+---
+import { cva, type VariantProps } from 'class-variance-authority'
+
+// Define las variantes y clases usando `cva`
+export const buttonVariants = cva(
+	'inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 shadow-sm shadow-black/5 px-4 py-3 disabled:opacity-50 disabled:cursor-not-allowed',
+	{
+		variants: {
+			variant: {
+				default: 'bg-light-blue text-white hover:bg-sand',
+				secondary: 'bg-white text-primary-blue hover:bg-white/90'
+			}
+		},
+		defaultVariants: {
+			variant: 'default'
+		}
+	}
+)
+
+// Define las propiedades del botón
+export interface Props extends Record<string, any>, VariantProps<typeof buttonVariants> {}
+
+const { class: className, variant = 'default', disabled = false, ...props } = Astro.props
+---
+
+<button class={buttonVariants({ variant, className })} disabled={disabled} {...props}>
+	<slot />
+</button>

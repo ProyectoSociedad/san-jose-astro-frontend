@@ -23,7 +23,9 @@ export default {
 				'charcoal-gray': '#414E58',
 				'dark-gray': '#414141',
 				'light-sky-blue': '#E8EFFF',
-				'light-gray': '#696969'
+				'light-gray': '#696969',
+				whatsapp: '#25D366',
+				'whatsapp-hover': '#1ABB56'
 			},
 			boxShadow: {
 				'card-primary':
