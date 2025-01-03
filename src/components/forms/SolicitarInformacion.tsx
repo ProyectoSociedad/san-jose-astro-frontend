@@ -182,7 +182,7 @@ export const SolicitarInformacion = ({ type }: Props) => {
 			)}
 			{type === 'hero' && (
 				<div className="space-y-6 rounded-[12px] bg-blue-sky p-[17px] text-white xl:px-[30px] xl:py-[30px]">
-					<h3 className="text-center">Solicitar información</h3>
+					<h3 className="text-center">Obtén tu manual de INTELIGENCIA ARTIFICIAL inmobiliario</h3>
 					<form className="flex flex-col gap-2.5" onSubmit={handleSubmit}>
 						<input
 							type="text"

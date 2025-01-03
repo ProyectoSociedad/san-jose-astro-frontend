@@ -92,7 +92,8 @@ import { Image } from 'astro:assets'
 			>Obtén más información</a
 		>
 	</div>
-	<div class="grid gap-[26px] lg:mb-[170px] lg:gap-0">
+	<!-- lg:mb-[170px] -->
+	<div class="grid gap-[26px] lg:gap-0">
 		<Image
 			src={homeImages.hero}
 			alt="Hero"
@@ -100,6 +101,7 @@ import { Image } from 'astro:assets'
 			data-aos-delay="1000"
 			class="object-contain lg:col-start-1 lg:row-start-1 2xl:object-cover"
 		/>
+		<img src="/img/workshop.webp" alt="Hero" width={600} height={600} />
 		<div
 			class="mx-auto w-full max-w-[450px] lg:z-10 lg:col-start-1 lg:row-start-1 lg:mx-0 lg:w-fit lg:translate-y-[170px] 2xl:w-full 2xl:max-w-[320px]"
 		>
