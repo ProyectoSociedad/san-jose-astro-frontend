@@ -4,11 +4,13 @@ import { homeImages } from '@/assets/home'
 const customers = [
 	{
 		src: homeImages['prestopolis'],
-		alt: 'Prestópolis'
+		alt: 'Prestópolis',
+		href: 'https://prestopolis.com/plataforma'
 	},
 	{
 		src: homeImages['alquilat'],
-		alt: 'Alquilat'
+		alt: 'Alquilat',
+		href: '#'
 	}
 ]
 
@@ -27,22 +29,52 @@ while (extendedCustomers.length < 8) {
 			<div class="logos-slide">
 				{
 					extendedCustomers.map((customer) => {
-						return (
-							<div class="mx-1.5 inline-block rounded-[8px] bg-white p-4 shadow-[0px_12px_48px_0px_rgba(0,37,86,0.15)] md:mx-3 md:rounded-[12px] md:p-6">
-								<Image src={customer.src} alt={customer.alt} width={150} height={72} />
-							</div>
-						)
+						if (customer.href && customer.href !== '#') {
+							// Si el href es válido, renderiza un enlace
+							return (
+								<a
+									class="mx-1.5 inline-block rounded-[8px] bg-white p-4 shadow-[0px_12px_48px_0px_rgba(0,37,86,0.15)] md:mx-3 md:rounded-[12px] md:p-6"
+									href={customer.href}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<Image src={customer.src} alt={customer.alt} width={150} height={72} />
+								</a>
+							)
+						} else {
+							// Si el href no es válido, renderiza un div
+							return (
+								<div class="mx-1.5 inline-block rounded-[8px] bg-white p-4 shadow-[0px_12px_48px_0px_rgba(0,37,86,0.15)] md:mx-3 md:rounded-[12px] md:p-6">
+									<Image src={customer.src} alt={customer.alt} width={150} height={72} />
+								</div>
+							)
+						}
 					})
 				}
 			</div>
 			<div class="logos-slide">
 				{
 					extendedCustomers.map((customer) => {
-						return (
-							<div class="mx-1.5 inline-block rounded-[8px] bg-white p-4 shadow-[0px_12px_48px_0px_rgba(0,37,86,0.15)] md:mx-3 md:rounded-[12px] md:p-6">
-								<Image src={customer.src} alt={customer.alt} width={150} height={72} />
-							</div>
-						)
+						if (customer.href && customer.href !== '#') {
+							// Si el href es válido, renderiza un enlace
+							return (
+								<a
+									class="mx-1.5 inline-block rounded-[8px] bg-white p-4 shadow-[0px_12px_48px_0px_rgba(0,37,86,0.15)] md:mx-3 md:rounded-[12px] md:p-6"
+									href={customer.href}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<Image src={customer.src} alt={customer.alt} width={150} height={72} />
+								</a>
+							)
+						} else {
+							// Si el href no es válido, renderiza un div
+							return (
+								<div class="mx-1.5 inline-block rounded-[8px] bg-white p-4 shadow-[0px_12px_48px_0px_rgba(0,37,86,0.15)] md:mx-3 md:rounded-[12px] md:p-6">
+									<Image src={customer.src} alt={customer.alt} width={150} height={72} />
+								</div>
+							)
+						}
 					})
 				}
 			</div>
