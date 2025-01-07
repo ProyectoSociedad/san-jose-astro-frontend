@@ -11,10 +11,7 @@ export default {
 				'dm-sans': 'var(--font-dm-sans)'
 			},
 			container: {
-				center: true,
-				screens: {
-					'2xl': '1920px'
-				}
+				center: true
 			},
 			colors: {
 				'light-blue': '#0380FF',

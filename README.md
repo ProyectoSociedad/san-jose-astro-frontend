@@ -1,47 +1,58 @@
-# Astro Starter Kit: Minimal
+# Proyecto San José - Frontend
 
-```sh
-npm create astro@latest -- --template minimal
+Este proyecto es una aplicación frontend diseñada para servir contenido rápido y dinámico. A continuación, se presentan las instrucciones para ejecutarlo en un entorno de desarrollo local y exponerlo utilizando **Cloudflare Tunnel**.
+
+---
+
+## **Pasos para correr el proyecto en desarrollo**
+
+1. **Clonar el repositorio**
+
+   ```bash
+   git clone <URL-del-repositorio>
+   cd san-jose-astro-frontend
+   ```
+
+2. **Iniciar el servidor de desarrollo**
+   Ejecuta el siguiente comando para iniciar el entorno de desarrollo:
+
+   ```bash
+   npm run dev
+   ```
+
+3. **Acceso local**
+   Una vez iniciado el servidor, el proyecto estará disponible en `http://localhost:4321`.
+
+---
+
+## **Exponer el proyecto usando Cloudflare Tunnel**
+
+Para compartir tu proyecto local con colegas o clientes, ya se incluye el archivo `cloudflared.exe` en el repositorio. Solo necesitas ejecutar el siguiente comando:
+
+```bash
+./cloudflared.exe --url http://localhost:<puerto>
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+### **Obtener la URL pública**
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Una vez iniciado el túnel, se generará una URL pública temporal como:
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```
+https://<subdominio>.trycloudflare.com
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+- Comparte esta URL con tus colegas para que puedan acceder al proyecto en tiempo real.
+- Asegúrate de mantener la terminal abierta mientras utilizas el túnel.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+---
 
-Any static assets, like images, can be placed in the `public/` directory.
+## **Notas**
 
-## 🧞 Commands
+- Los túneles rápidos son temporales y pueden no garantizar un uptime constante.
+- El archivo `cloudflared.exe` ya está incluido en el repositorio, por lo que no necesitas instalar nada adicional para exponer el proyecto.
 
-All commands are run from the root of the project, from a terminal:
+---
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## **Contacto**
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Si tienes preguntas o problemas, no dudes en comunicarte con el equipo de desarrollo. 😊

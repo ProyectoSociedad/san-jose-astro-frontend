@@ -23,7 +23,7 @@
 		@apply h-full w-full object-cover;
 	}
 	.container {
-		@apply px-4 md:px-8 lg:px-12 xl:px-16;
+		@apply px-4;
 	}
 	h1 {
 		@apply text-[32px] font-bold md:text-[45px] md:leading-[54px] xl:text-[70px] xl:leading-[75px];

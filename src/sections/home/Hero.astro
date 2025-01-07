@@ -33,7 +33,7 @@ import { Image } from 'astro:assets'
 			data-aos-delay="250"
 			class="mb-[14px] mt-[25px] max-w-[429px] text-charcoal-gray xl:max-w-[458px]"
 		>
-			Agente Inmobiliario
+			Agente Inmobiliario {new Date().getFullYear()}
 		</h1>
 		<!-- Convenio -->
 		<div class="flex flex-col gap-2 2xl:flex-row">
@@ -101,7 +101,9 @@ import { Image } from 'astro:assets'
 			data-aos-delay="1000"
 			class="object-contain lg:col-start-1 lg:row-start-1 2xl:object-cover"
 		/>
-
+		<picture>
+			<img src="/img/workshop.webp" alt="Hero" width={600} height={600} class="object-contain" />
+		</picture>
 		<div
 			class="mx-auto w-full max-w-[450px] lg:z-10 lg:col-start-1 lg:row-start-1 lg:mx-0 lg:w-fit lg:translate-y-[170px] 2xl:w-full 2xl:max-w-[320px]"
 		>
@@ -110,7 +112,4 @@ import { Image } from 'astro:assets'
 			</div>
 		</div>
 	</div>
-	<picture class="col-span-full mx-auto">
-		<img src="/img/workshop.webp" alt="Hero" width={600} height={600} />
-	</picture>
 </section>
