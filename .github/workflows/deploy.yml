@@ -31,8 +31,8 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
           port: ${{ secrets.PORT }} # Cambia el puerto si tu servidor usa uno diferente.
-          source: 'dist/*' # Copiar solo el contenido de `dist`, no la carpeta.
-          target: ${{ secrets.WORKING_DIRECTORY }} # Copiar los archivos directamente al directorio remoto.
+          source: 'dist/*' # Selecciona SOLO el contenido de `dist`.
+          target: ${{ secrets.WORKING_DIRECTORY }}/ # Asegúrate de que el contenido se copie directamente al directorio remoto.
 
       - name: Configure server
         uses: appleboy/ssh-action@v1.0.0 # Conexión SSH para ejecutar comandos en el servidor.
