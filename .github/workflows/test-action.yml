@@ -1,0 +1,17 @@
+name: Test Action
+
+on:
+  push: # Este workflow se ejecutará cada vez que hagas un push.
+    branches:
+      - master # O la rama principal de tu repositorio.
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest # Sistema operativo en el que se ejecutará el workflow.
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3 # Revisa el código del repositorio.
+
+      - name: Say Hello
+        run: echo "Hola desde GitHub Action 🚀"
