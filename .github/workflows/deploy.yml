@@ -12,6 +12,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3 # Obtiene el código del repositorio.
+      - name: Set up .env file
+        run: |
+          echo "SITE=https://cursoagenteinmobiliarioperu.pe" >> .env
+          echo "API_INFORMATION=https://cursoagenteinmobiliarioperu.pe/consultas/seguimiento.php" >> .env
+          echo "PUBLIC_RECAPTCHA_SITE_KEY=6Ld00wAoAAAAAJGAT_A5MBM0b9w5hhuxCx-2AdEs" >> .env
 
       - name: Install dependencies
         run: |
