@@ -1,0 +1,43 @@
+name: Deploy Static Files
+
+on:
+  push:
+    branches:
+      - master # Ejecutar el workflow solo cuando haya un push a la rama `master`.
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3 # Obtiene el código del repositorio.
+
+      - name: Install dependencies
+        run: |
+          npm install
+          npm run build # Genera los archivos estáticos en el directorio `dist`.
+
+      - name: Upload files to server
+        uses: appleboy/scp-action@v0.1.0 # Usa un paquete para subir archivos al servidor vía SCP.
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: ${{ secrets.PORT }} # Cambia el puerto si tu servidor usa uno diferente.
+          source: 'dist/*' # Los archivos a copiar.
+          target: ${{ secrets.WORKING_DIRECTORY }} # Directorio remoto donde se copiarán los archivos.
+
+      - name: Configure server
+        uses: appleboy/ssh-action@v1.0.0 # Conexión SSH para ejecutar comandos en el servidor.
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: ${{ secrets.PORT }} # Cambia el puerto si tu servidor usa uno diferente.
+          script: |
+            # Ve al directorio de trabajo.
+            cd ${{ secrets.WORKING_DIRECTORY }}
+
+            # Configura permisos adecuados.
+            chmod -R 755 ${{ secrets.WORKING_DIRECTORY }}
