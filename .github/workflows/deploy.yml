@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3 # Obtiene el código del repositorio.
+
       - name: Set up .env file
         run: |
           echo "SITE=https://cursoagenteinmobiliarioperu.pe" >> .env
@@ -30,8 +31,8 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
           port: ${{ secrets.PORT }} # Cambia el puerto si tu servidor usa uno diferente.
-          source: 'dist/*' # Los archivos a copiar.
-          target: ${{ secrets.WORKING_DIRECTORY }} # Directorio remoto donde se copiarán los archivos.
+          source: 'dist/*' # Copiar solo el contenido de `dist`, no la carpeta.
+          target: ${{ secrets.WORKING_DIRECTORY }} # Copiar los archivos directamente al directorio remoto.
 
       - name: Configure server
         uses: appleboy/ssh-action@v1.0.0 # Conexión SSH para ejecutar comandos en el servidor.
