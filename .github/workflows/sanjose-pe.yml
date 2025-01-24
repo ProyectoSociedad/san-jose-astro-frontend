@@ -31,7 +31,7 @@ jobs:
           username: ${{ secrets.USERNAME_SANJOSE_PE }}
           key: ${{ secrets.PRIVATE_KEY_SANJOSE_PE }}
           port: ${{ secrets.PORT }} # Cambia el puerto si tu servidor usa uno diferente.
-          source: 'dist/*' # Selecciona SOLO el contenido de `dist`.
+          source: 'dist/**/*' # Selecciona SOLO el contenido de `dist`.
           target: '/tmp/dist_upload' # Subimos a una carpeta temporal en el servidor.
 
       - name: Configure server
