@@ -25,14 +25,14 @@ jobs:
           npm run build # Genera los archivos estáticos en el directorio `dist`.
 
       - name: Upload files to server
-        uses: appleboy/scp-action@v0.1.0 # Usa un paquete para subir archivos al servidor vía SCP.
+        uses: appleboy/scp-action@v0.1.7 # Usa un paquete para subir archivos al servidor vía SCP.
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME_SANJOSE_PE }}
           key: ${{ secrets.PRIVATE_KEY_SANJOSE_PE }}
           port: ${{ secrets.PORT }} # Cambia el puerto si tu servidor usa uno diferente.
-          source: 'dist/**/*' # Selecciona SOLO el contenido de `dist`.
-          target: '/tmp/dist_upload' # Subimos a una carpeta temporal en el servidor.
+          source: 'dist/*' # Selecciona SOLO el contenido de `dist`.
+          target: '${{ secrets.WORKING_DIRECTORY_SANJOSE_PE }}' # Sube directamente al directorio de destino.
 
       - name: Configure server
         uses: appleboy/ssh-action@v1.0.0 # Conexión SSH para ejecutar comandos en el servidor.
@@ -42,14 +42,5 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY_SANJOSE_PE }}
           port: ${{ secrets.PORT }}
           script: |
-            # Limpia el directorio de destino en el servidor.
-            rm -rf ${{ secrets.WORKING_DIRECTORY_SANJOSE_PE }}/*
-
-            # Mueve el contenido de la carpeta temporal al directorio de destino.
-            mv /tmp/dist_upload/* ${{ secrets.WORKING_DIRECTORY_SANJOSE_PE }}
-
-            # Configura permisos adecuados.
+            # Configura permisos adecuados en el directorio destino
             chmod -R 755 ${{ secrets.WORKING_DIRECTORY_SANJOSE_PE }}
-
-            # Elimina la carpeta temporal.
-            rm -rf /tmp/dist_upload
