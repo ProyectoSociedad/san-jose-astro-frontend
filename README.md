@@ -53,6 +53,27 @@ https://<subdominio>.trycloudflare.com
 
 ---
 
+## Ramas del repositorio
+
+Este repositorio maneja diferentes dominios de la empresa **San José del Sur**. Cada rama está asociada a un dominio específico:
+
+- **`sanjose-com`**: Representa el dominio `https://cursoagenteinmobiliarioperu.com`.
+- **`sanjose-pe`**: Representa el dominio `https://cursoagenteinmobiliarioperu.pe`.
+- **`sanjose-simple-pe`**: Representa el dominio `https://cursoagenteinmobiliario.pe`.
+
+### ¿Cómo trabajar en las ramas?
+
+- Para trabajar en un dominio específico, cambia a la rama correspondiente usando `git checkout`.
+- Los despliegues están configurados para cada rama a través de **GitHub Actions**.
+
+### Ejemplo:
+
+```bash
+# Cambiar a la rama de `sanjose-com`
+git checkout sanjose-com
+
+```
+
 ## **Contacto**
 
 Si tienes preguntas o problemas, no dudes en comunicarte con el equipo de desarrollo. 😊
