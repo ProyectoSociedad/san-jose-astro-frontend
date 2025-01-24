@@ -32,7 +32,7 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY_SANJOSE_PE }}
           port: ${{ secrets.PORT }} # Cambia el puerto si tu servidor usa uno diferente.
           source: 'dist/*' # Selecciona SOLO el contenido de `dist`.
-          target: '${{ secrets.WORKING_DIRECTORY_SANJOSE_PE }}' # Sube directamente al directorio de destino.
+          target: '${{ secrets.WORKING_DIRECTORY_SANJOSE_PE }}/dist' # Subimos a un subdirectorio temporal `dist` dentro de `public_html`.
 
       - name: Configure server
         uses: appleboy/ssh-action@v1.0.0 # Conexión SSH para ejecutar comandos en el servidor.
@@ -42,5 +42,11 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY_SANJOSE_PE }}
           port: ${{ secrets.PORT }}
           script: |
+            # Mueve el contenido de la carpeta dist al directorio destino
+            mv /home/cursoagenteinmop/public_html/dist/* /home/cursoagenteinmop/public_html/
+
+            # Elimina la carpeta dist ahora vacía
+            rm -rf /home/cursoagenteinmop/public_html/dist
+
             # Configura permisos adecuados en el directorio destino
-            chmod -R 755 ${{ secrets.WORKING_DIRECTORY_SANJOSE_PE }}
+            chmod -R 755 /home/cursoagenteinmop/public_html/
