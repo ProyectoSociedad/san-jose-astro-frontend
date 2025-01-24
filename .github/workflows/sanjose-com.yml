@@ -25,31 +25,28 @@ jobs:
           npm run build # Genera los archivos estáticos en el directorio `dist`.
 
       - name: Upload files to server
-        uses: appleboy/scp-action@v0.1.0 # Usa un paquete para subir archivos al servidor vía SCP.
+        uses: appleboy/scp-action@v0.1.7 # Usa un paquete para subir archivos al servidor vía SCP.
         with:
           host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME_SANJOSE_COM }}
+          username: 'cursoagentecom'
           key: ${{ secrets.PRIVATE_KEY_SANJOSE_COM }}
           port: ${{ secrets.PORT }} # Cambia el puerto si tu servidor usa uno diferente.
           source: 'dist/*' # Selecciona SOLO el contenido de `dist`.
-          target: '/tmp/dist_upload' # Subimos a una carpeta temporal en el servidor.
+          target: '/home/cursoagentecom/public_html/' # Subimos a un subdirectorio temporal `dist` dentro de `public_html`.
 
       - name: Configure server
         uses: appleboy/ssh-action@v1.0.0 # Conexión SSH para ejecutar comandos en el servidor.
         with:
           host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME_SANJOSE_COM }}
+          username: 'cursoagentecom'
           key: ${{ secrets.PRIVATE_KEY_SANJOSE_COM }}
           port: ${{ secrets.PORT }}
           script: |
-            # Limpia el directorio de destino en el servidor.
-            rm -rf ${{ secrets.WORKING_DIRECTORY_SANJOSE_COM }}/*
+            # Mueve el contenido de la carpeta dist al directorio destino
+            mv /home/cursoagentecom/public_html/dist/* /home/cursoagentecom/public_html/
 
-            # Mueve el contenido de la carpeta temporal al directorio de destino.
-            mv /tmp/dist_upload/* ${{ secrets.WORKING_DIRECTORY_SANJOSE_COM }}
+            # Elimina la carpeta dist ahora vacía
+            rm -rf /home/cursoagentecom/public_html/dist
 
-            # Configura permisos adecuados.
-            chmod -R 755 ${{ secrets.WORKING_DIRECTORY_SANJOSE_COM }}
-
-            # Elimina la carpeta temporal.
-            rm -rf /tmp/dist_upload
+            # Configura permisos adecuados en el directorio destino
+            chmod -R 755 /home/cursoagentecom/public_html/
